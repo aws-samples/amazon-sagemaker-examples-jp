@@ -16,7 +16,7 @@
 - MXNet + Gluon (MNIST MLP) で [やってみる](./mxnet-gluon/mxnet-gluon.ipynb) [[Original code](https://github.com/apache/incubator-mxnet/tree/master/example/gluon/mnist)]
 - Keras (MNIST MLP) [[Original code](https://github.com/keras-team/keras/blob/master/examples/mnist_mlp.py)]
 - Chainer (MNIST MLP) [[Original code](https://github.com/chainer/chainer/tree/master/examples/mnist)]
-- TensorFlow (MNIST CNN) [[Original code](https://github.com/tensorflow/tensorflow/blob/master/tensorflow/examples/tutorials/layers/cnn_mnist.py)]
+- TensorFlow (MNIST CNN)で[やってみる](./tensorflow/tensorflow.ipynb) [[Original code](https://github.com/tensorflow/tensorflow/blob/master/tensorflow/examples/tutorials/layers/cnn_mnist.py)]
 - PyTorch (MNIST CNN) [[Original code](https://github.com/pytorch/examples/blob/master/mnist/main.py)]
 
 
