@@ -27,6 +27,10 @@ SageMaker Ground Truthでは前・後処理のLambda関数とラベリングツ�
 - ワーカーがタスクを完了したら、Ground Truth は結果を [ポストラベリング Lambda関数](https://github.com/tkazusa/gt-custom-pose/blob/master/server/processing/sagemaker-gt-postprocess.py) に送信します。
 - この Lambda は一般に、[注釈統合](https://docs.aws.amazon.com/ja_jp/sagemaker/latest/dg/sms-annotation-consolidation.html)に使用されます。
 
+## 活用するデータ
+データは[MPII Human Pose Dataset, Version 1.0]()から抜粋しています。
+著作権は2015 Max Planck Institute for Informaticsに帰属し、Simplified BSD Licenseの条件のもとで活用されます。
+詳細は[bsd.txt](https://github.com/tkazusa/amazon-sagemaker-examples-jp/blob/master/gt-custom-keypoint/server/data/bsd.txt)をご覧下さい。
 
 ## 参考資料
 - [Amazon SageMaker Ground Truth を使ったカスタムデータラベリングワークフローの構築](https://aws.amazon.com/jp/blogs/news/build-a-custom-data-labeling-workflow-with-amazon-sagemaker-ground-truth/)
