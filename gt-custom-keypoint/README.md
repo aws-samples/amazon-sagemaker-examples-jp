@@ -9,7 +9,7 @@ SageMaker Ground Truthでは前・後処理のLambda関数とラベリングツ�
 ## カスタムデータラベリングジョブの主なコンポーネント
 ### 1. HTMLテンプレート
 - カスタムラベリングジョブでは定義済のテンプレートをカスタマイズして使う事が出来ます。
-- 今回は"Keypoint"というHTMLテンプレートをカスタマイズして[template.html](https://github.com/tkazusa/gt-custom-pose/blob/master/web/template.html)を作成しました。
+- 今回は"Keypoint"というHTMLテンプレートをカスタマイズして[template.html](https://github.com/aws-samples/amazon-sagemaker-examples-jp/blob/master/gt-custom-keypoint/web/template.html)を作成しました。
 
 ### 2. ラベリング対象のデータ
 - ラベリングするデータです。S3に保存することでGround Truthでアノテーションすることができます。
