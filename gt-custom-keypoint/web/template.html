@@ -1,0 +1,37 @@
+<!--
+Copyright 2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+
+Licensed under the Apache License, Version 2.0 (the "License"). You
+may not use this file except in compliance with the License. A copy of
+the License is located at
+     http://aws.amazon.com/apache2.0/
+
+or in the "license" file accompanying this file. This file is
+distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF
+ANY KIND, either express or implied. See the License for the specific
+language governing permissions and limitations under the License.
+-->
+
+<script src="https://assets.crowd.aws/crowd-html-elements.js"></script>
+
+<crowd-form>
+  <crowd-keypoint
+    name="annotatedResult"
+    src="{{ task.input.taskObject | grant_read_access }}"
+    header="それぞれのラベルに該当する箇所にポイントして下さい。"
+    labels="['頭', '左肩', '左腕', '右肩', '右腕']"
+  >
+    <full-instructions header="Keypoint Instructions" >
+      <p>キーポイントツールを使ってマークして下さい。</p>
+      <ol>
+        <li>
+          キーポイント推定です。
+        </li>
+      </ol>
+    </full-instructions>
+
+    <short-instructions>
+      キーポイント推定です。
+    </short-instructions>
+  </crowd-keypoint>
+</crowd-form>
