@@ -28,6 +28,9 @@ from keras.optimizers import Adam, SGD, RMSprop
 import tensorflow as tf
 from keras import backend as K
 
+# ===============変更点======================= #
+from keras.callbacks import TensorBoard
+
 sess = tf.Session()
 K.set_session(sess)
 
