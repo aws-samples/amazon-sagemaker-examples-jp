@@ -244,30 +244,24 @@ if __name__ == '__main__':
         type=str,
         required=False,
         default=os.environ['SM_CHANNEL_TRAIN'], #===変更点===
-        help='The directory where the CIFAR-10 input data is stored.')
-    
+        help='The directory where the CIFAR-10 input data is stored.')    
     parser.add_argument(
         '--validation',
         type=str,
         required=False,
         default=os.environ['SM_CHANNEL_VALIDATION'], #===変更点===
         help='The directory where the CIFAR-10 input data is stored.')
-    
     parser.add_argument(
         '--eval',
         type=str,
         required=False,
         default=os.environ['SM_CHANNEL_EVAL'], #===変更点===
         help='The directory where the CIFAR-10 input data is stored.')
-    
-
     parser.add_argument(
         '--model_dir',
         type=str,
         required=True,
         help='The directory where the model will be stored.')
-    
-    
     parser.add_argument(
         '--weight-decay',
         type=float,
@@ -306,9 +300,6 @@ if __name__ == '__main__':
         '--model_output_dir',
         type=str,
         default=os.environ.get('SM_MODEL_DIR'))
-    
         
     args = parser.parse_args()
-    print(args)
-    
     main(args)
