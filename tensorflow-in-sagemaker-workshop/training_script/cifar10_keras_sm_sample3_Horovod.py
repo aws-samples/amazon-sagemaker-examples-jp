@@ -41,7 +41,9 @@ NUM_DATA_BATCHES = 5
 NUM_EXAMPLES_PER_EPOCH_FOR_TRAIN = 10000 * NUM_DATA_BATCHES
 INPUT_TENSOR_NAME = 'inputs_input'  # needs to match the name of the first layer + "_input"
 
-def keras_model_fn(learning_rate, weight_decay, optimizer, momentum):
+# ===============変更点======================= #
+# def keras_model_fn(learning_rate, weight_decay, optimizer, momentum):
+def keras_model_fn(learning_rate, weight_decay, optimizer, momentum, hvd):
     """keras_model_fn receives hyperparameters from the training job and returns a compiled keras model.
     The model will be transformed into a TensorFlow Estimator before training and it will be saved in a 
     TensorFlow Serving SavedModel at the end of training.
@@ -86,7 +88,9 @@ def keras_model_fn(learning_rate, weight_decay, optimizer, momentum):
     model.add(Dense(NUM_CLASSES))
     model.add(Activation('softmax'))
 
-    size = 1
+    # ===============変更点======================= #
+    # size = 1
+    size=hvd.size()
 
     if optimizer.lower() == 'sgd':
         opt = SGD(lr=learning_rate * size, decay=weight_decay, momentum=momentum)
@@ -94,10 +98,15 @@ def keras_model_fn(learning_rate, weight_decay, optimizer, momentum):
         opt = RMSprop(lr=learning_rate * size, decay=weight_decay)
     else:
         opt = Adam(lr=learning_rate * size, decay=weight_decay)
+        
+        
+    # ===============変更点======================= #   
+    opt = hvd.DistributedOptimizer(opt)
 
     model.compile(loss='categorical_crossentropy',
                   optimizer=opt,
                   metrics=['accuracy'])
+    
     return model
 
 
@@ -195,6 +204,14 @@ def save_model(model, output):
     return
 
 def main(args):
+    # ===========変更点============= #
+    import horovod.keras as hvd
+    hvd.init()
+    config = tf.ConfigProto()
+    config.gpu_options.allow_growth = True
+    config.gpu_options.visible_device_list = str(hvd.local_rank())
+    K.set_session(tf.Session(config=config))
+    
     logging.info("getting data")
     
     train_dataset = train_input_fn()
@@ -202,13 +219,24 @@ def main(args):
     validation_dataset = validation_input_fn()
     
     
+    # ===============変更点======================= #
     logging.info("configuring model")
-    model = keras_model_fn(args.learning_rate, args.weight_decay, args.optimizer, args.momentum)
+    model = keras_model_fn(args.learning_rate, args.weight_decay, args.optimizer, args.momentum, hvd)
     callbacks = []
 
     # ===============変更点======================= #
     # callbacks.append(ModelCheckpoint(args.model_dir + '/checkpoint-{epoch}.h5'))
     callbacks.append(ModelCheckpoint(args.model_output_dir + '/checkpoint-{epoch}.h5'))
+    
+    # ===============変更点======================= #
+    callbacks.append(hvd.callbacks.BroadcastGlobalVariablesCallback(0))
+    callbacks.append(hvd.callbacks.MetricAverageCallback())
+    callbacks.append(hvd.callbacks.LearningRateWarmupCallback(warmup_epochs=5, verbose=1))
+    
+    # ===============変更点======================= #
+    if hvd.rank() == 0:
+        callbacks.append(ModelCheckpoint(args.model_output_dir + '/checkpoint-{epoch}.h5'))
+        callbacks.append(TensorBoard(log_dir=args.model_dir,update_freq='epoch'))
 
     logging.info("Starting training")
     model.fit(x=train_dataset[0], y=train_dataset[1],

@@ -28,6 +28,9 @@ from keras.optimizers import Adam, SGD, RMSprop
 import tensorflow as tf
 from keras import backend as K
 
+# ===============変更点================= #
+from keras.callbacks import TensorBoard
+
 sess = tf.Session()
 K.set_session(sess)
 
@@ -200,8 +203,7 @@ def main(args):
     train_dataset = train_input_fn()
     eval_dataset = eval_input_fn()
     validation_dataset = validation_input_fn()
-    
-    
+        
     logging.info("configuring model")
     model = keras_model_fn(args.learning_rate, args.weight_decay, args.optimizer, args.momentum)
     callbacks = []
@@ -209,6 +211,9 @@ def main(args):
     # ===============変更点======================= #
     # callbacks.append(ModelCheckpoint(args.model_dir + '/checkpoint-{epoch}.h5'))
     callbacks.append(ModelCheckpoint(args.model_output_dir + '/checkpoint-{epoch}.h5'))
+    
+    # ===============変更点======================= #
+    callbacks.append(TensorBoard(log_dir=args.model_dir,update_freq='epoch'))
 
     logging.info("Starting training")
     model.fit(x=train_dataset[0], y=train_dataset[1],
@@ -244,8 +249,7 @@ if __name__ == '__main__':
         type=str,
         required=False,
         default=os.environ['SM_CHANNEL_TRAIN'], #===変更点===
-        help='The directory where the CIFAR-10 input data is stored.')
-    
+        help='The directory where the CIFAR-10 input data is stored.')   
     parser.add_argument(
         '--validation',
         type=str,
@@ -259,15 +263,11 @@ if __name__ == '__main__':
         required=False,
         default=os.environ['SM_CHANNEL_EVAL'], #===変更点===
         help='The directory where the CIFAR-10 input data is stored.')
-    
-
     parser.add_argument(
         '--model_dir',
         type=str,
         required=True,
-        help='The directory where the model will be stored.')
-    
-    
+        help='The directory where the model will be stored.')    
     parser.add_argument(
         '--weight-decay',
         type=float,
@@ -308,7 +308,5 @@ if __name__ == '__main__':
         default=os.environ.get('SM_MODEL_DIR'))
     
         
-    args = parser.parse_args()
-    print(args)
-    
+    args = parser.parse_args()    
     main(args)
