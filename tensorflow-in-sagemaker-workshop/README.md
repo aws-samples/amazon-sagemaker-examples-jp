@@ -15,8 +15,26 @@ Amazon SageMaker Python SDK はいくつかの異なる機械学習や深層学�
 4. [Horovodを用いた分散学習の実行](3_Distributed_training_with_Horovod.ipynb)
 5. [Amazon SageMakerを用いた学習済モデルのデプロイ](4_Deploying_your_TensorFlow_model.ipynb)
 
+
+## サンプルコードについて
+本ハンズオンは基本的には 「[TensorFlow 学習スクリプトを Amazon SageMaker 向けに書き換える](0_Running_TensorFlow_In_SageMaker.ipynb)」で SageMaker 向けにスクリプトを書き換えることを想定されて作られています。もし「[学習ジョブをTensorBoardとAmazon CloudWatch メトリクスを使って監視する](1_Monitoring_your_TensorFlow_scripts.ipynb)
+」や「[Horovodを用いた分散学習の実行](3_Distributed_training_with_Horovod.ipynb)」 のみを実施したい場合には、下記の手順で「[TensorFlow 学習スクリプトを Amazon SageMaker 向けに書き換える](0_Running_TensorFlow_In_SageMaker.ipynb) をスキップすることが出来ます。
+
+1. すでに書き換え済のスクリプトが `training_script/sample-codes` にあるので、TensorFlow Estimator の `entory_point` に指定
+2. ノートブックインスタンス上で 
+```!aws s3 cp --recursive s3://floor28/data/cifar10 ./data```
+を実行しデータをダウンロード
+3. 各ノートブックでコメントアウトされている下記をを実行してS3へデータをアップロード
+
+```python
+dataset_location = sagemaker_session.upload_data(path='data', key_prefix='data/DEMO-cifar10')
+display(dataset_location)
+```
+
+
 ## ライセンスについて
 このサンプルコードはMIT-0ライセンスのもとで公開されています。詳細は [LICENSE](LICENSE) ファイルをご確認下さい。
+
 
 ## 参考
 [Running your TensorFlow Models in SageMaker Workshop](https://github.com/aws-samples/TensorFlow-in-SageMaker-workshop)
