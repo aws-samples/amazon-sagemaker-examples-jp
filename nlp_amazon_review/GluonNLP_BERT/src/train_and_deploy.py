@@ -14,9 +14,13 @@ import sys
 import logging
 logging.basicConfig(level=logging.INFO)
 
-num_cpus = int(os.environ['SM_NUM_CPUS'])
-num_gpus = int(os.environ['SM_NUM_GPUS'])
 
+try:
+    num_cpus = int(os.environ['SM_NUM_CPUS'])
+    num_gpus = int(os.environ['SM_NUM_GPUS'])
+except KeyError:
+    num_gpus = 0
+    
 ctx = mx.gpu() if num_gpus > 0 else mx.cpu()
 bert_base, vocabulary = nlp.model.get_model('bert_12_768_12', 
                                    dataset_name='wiki_multilingual_uncased', 
