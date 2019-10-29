@@ -14,5 +14,5 @@
 - 各種深層学習フレームワークにおいて Amazon SageMaker 向けのトレーニングスクリプトの書き方を理解していること 
 
 ## コンテンツ
-- Tensorflow 2.0 (MNIST MLP) で[やってみる](./tensorflow2.0/bring_your_own_container_tf2.ipynb)[[Original: SageMaker Containers](https://github.com/aws/sagemaker-containers#sagemaker-containers)]
+- Tensorflow 2.0 (MNIST MLP) で[やってみる](./tensorflow2.0/bring_your_own_container_tf2.ipynb) [[Original: SageMaker Containers](https://github.com/aws/sagemaker-containers#sagemaker-containers)]
 
