@@ -6,7 +6,7 @@
 ## 本ハンズオンで学べる内容
 - SageMaker の組み込みアルゴリズムである XGBoost を用いた機械学習モデルの学習
 - SageMaker を用いた際の XGBoost での特徴量重要度の可視化
-- Partianl Dependency Plot(PDP) による特徴量の変化による目的変数への影響の可視化
+- Partial Dependency Plot(PDP) による特徴量の変化による目的変数への影響の可視化
 
 ## ノートブックについて
 `xgboost_wine_quality_batch.ipynb`  ではPDPを描く際に、特定のカラムを任意の値に変更し、s3へアップロードした上でバッチ変換ジョブで推論を実施します。一方、`xgboost_wine_quality_endpoint.ipynb` では、推論エンドポイントへ変更後のデータを渡して推論を実施します。
