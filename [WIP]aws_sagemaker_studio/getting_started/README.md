@@ -1,41 +1,40 @@
 # Getting Started with Amazon SageMaker Studio
 
-This folder contains a [Jupyter notebook that will demonstrate the main features of Amazon SageMaker Studio](xgboost_customer_churn_studio.ipynb). It is designed to be run from within Studio. It is an example of creating a model to predict customer churn using the XGBoost algorithm.
+このフォルダでは [Amazon SageMaker Studio のメインの機能を試す Jupyter notebook](xgboost_customer_churn_studio.ipynb) を提供しています。これは Studio で動かすことを想定して作られています。XGBoostを利用して Customer Churn (顧客離反分析) のモデルを作るサンプルです。
 
-## Features
+## 利用している SageMaker の機能
 
 * [Amazon SageMaker Experiments](https://docs.aws.amazon.com/sagemaker/latest/dg/experiments.html)
-  * Manage multiple trials
-  * Hyperparameter experimentation & charting
+  * 複数の機械学習の試行を管理する
+  * ハイパーパラメータに関する実験とグラフ化
 * [Amazon SageMaker Debugger](https://docs.aws.amazon.com/sagemaker/latest/dg/train-debugger.html)
-  * Debug your model 
+  * モデルのデバッグ
 * [Model hosting](https://docs.aws.amazon.com/sagemaker/latest/dg/how-it-works-hosting.html)
-  * Set up a persistent endpoint to get predictions from your model
+  * モデルから予測を得るための永続的なエンドポイントをセットアップ
 * [SageMaker Model Monitor](https://docs.aws.amazon.com/sagemaker/latest/dg/model-monitor.html)
-  * Monitor the quality of your model
-  * Set alerts for when there are deviations in the model's quality
+  * モデルの品質を監視する
+  * モデルの品質に変化があった場合にアラートをあげる
 
-## Prerequisites
+## 準備
 
-You must have already [on-boarded with Amazon SageMaker Studio](https://docs.aws.amazon.com/sagemaker/latest/dg/gs-studio-onboard.html) and be able to login to Studio.
+[Amazon SageMaker Studioの利用を開始する](https://docs.aws.amazon.com/sagemaker/latest/dg/gs-studio-onboard.html) をすでに完了して、ログインできるようにしておく必要があります。
 
-## How to run this notebook
+## ノートブックの利用方法
 
-1. Login to [Amazon SageMaker Studio](https://us-east-2.console.aws.amazon.com/sagemaker/home?region=us-east-2#/studio/).
+1. [Amazon SageMaker Studio](https://us-east-2.console.aws.amazon.com/sagemaker/home?region=us-east-2#/studio/) へログイン
 
-2. Open a terminal within Studio.
+2. Studio のターミナルを開く
 
-![open a terminal](./images/open_a_terminal.gif)
+![ターミナルの開き方](./images/open_a_terminal.gif)
 
-3. Clone this repository with the following command.
+3. 以下のコマンドからこのレポジトリをクローンする
 
 ```bash
 git clone https://github.com/awslabs/amazon-sagemaker-examples.git
 ```
 
-![clone the repo](./images/clone_the_repo.gif)
+![レポジトリのクローン](./images/clone_the_repo.gif)
 
-4. Use Studio's file manager to find and open the notebook.
+4. Studioのファイルマネージャからノートブックを探して開く
 
-![find the notebook](./images/find_and_open_the_notebook.gif)
-
+![ノートブックを探す](./images/find_and_open_the_notebook.gif)
