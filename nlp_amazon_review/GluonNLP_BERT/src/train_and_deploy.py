@@ -3,8 +3,6 @@ import mxnet as mx
 import json
 import sys
 import os
-sys.path.append('./lib/') # for training
-sys.path.append('./code/lib/lib/') # for deploying
 import gluonnlp as nlp
 from mxnet import gluon, autograd
 from mxnet.gluon import nn
