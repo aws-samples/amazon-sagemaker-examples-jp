@@ -1,0 +1,3 @@
+gluonnlp==0.8.1
+autogluon
+cloudpickle==1.3.0
