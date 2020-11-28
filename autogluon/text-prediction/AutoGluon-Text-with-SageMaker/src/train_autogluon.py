@@ -70,8 +70,8 @@ def transform_fn(net, data, input_content_type, output_content_type):
 
     try:
         sentence = json.loads(data)
-        logging.info("Received_data: {}".format(data))
-        output = net.predict(sentence)
+        logging.info("Received_data: {}".format(sentence))
+        output = net.predict_proba(sentence)
         response_body = json.dumps(output.asnumpy().tolist())
         return response_body, output_content_type
 
