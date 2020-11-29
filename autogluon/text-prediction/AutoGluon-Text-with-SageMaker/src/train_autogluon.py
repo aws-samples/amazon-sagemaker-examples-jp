@@ -10,6 +10,7 @@ import cloudpickle
 import pickle
 
 from autogluon import TextClassification as task
+from autogluon.core import Real
 
 
 if __name__ == '__main__':
@@ -20,7 +21,6 @@ if __name__ == '__main__':
 
     parser.add_argument('--batch-size', type=int, default=32)
     parser.add_argument('--epochs', type=int, default=1)
-    parser.add_argument('--learning-rate', type=float, default=5e-6)
     parser.add_argument('--log-interval', type=float, default=4)
 
     parser.add_argument('--model-dir', type=str, default=os.environ['SM_MODEL_DIR'])
@@ -36,8 +36,9 @@ if __name__ == '__main__':
     training_dir = args.train
 
     #autogluon
+    learning_rate = Real(2e-06, 2e-05, log=True)
     dataset = task.Dataset(filepath=os.path.join(training_dir, 'train.csv'), usecols=['text', 'target'])
-    predictor = task.fit(dataset, epochs=num_epochs,pretrained_dataset='wiki_multilingual_uncased')
+    predictor = task.fit(dataset, lr = learning_rate, epochs=num_epochs,pretrained_dataset='wiki_multilingual_uncased')
     cloudpickle.dump(predictor, open('%s/model'% model_dir, 'wb'))
 
 
@@ -70,8 +71,8 @@ def transform_fn(net, data, input_content_type, output_content_type):
 
     try:
         sentence = json.loads(data)
-        logging.info("Received_data: {}".format(data))
-        output = net.predict(sentence)
+        logging.info("Received_data: {}".format(sentence))
+        output = net.predict_proba(sentence)
         response_body = json.dumps(output.asnumpy().tolist())
         return response_body, output_content_type
 
