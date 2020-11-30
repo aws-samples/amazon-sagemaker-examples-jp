@@ -3,9 +3,6 @@
 このリポジトリには、「Amazon SageMaker Model Monitor と Debugger を使って不正な予測を検知して分析する」のノートブックとスクリプトが含まれています。
 
 [SageMaker notebook instance](https://docs.aws.amazon.com/sagemaker/latest/dg/howitworks-create-ws.html)を作成し、このリポジトリをcloneしてください。
-```
-git clone git@github.com:aws-samples/amazon-sagemaker-analyze-model-predictions.git
-```
 
 [analyze_model_predictions.ipynb](analyze_model_predictions.ipynb)では、最初に[German Traffic Sign dataset](https://ieeexplore.ieee.org/document/6033395)を使用して43のカテゴリの交通標識を分類するように学習した[ResNet18](https://arxiv.org/abs/1512.03385)モデルをデプロイします。
 
