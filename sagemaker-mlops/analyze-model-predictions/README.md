@@ -1,6 +1,5 @@
 ## Amazon SageMaker Model Monitor と Debugger を使って不正な予測を検知して分析する
 
-This repository contains the notebook and scripts for the blogpost "Detecting and analyzing incorrect model predictions with Amazon SageMaker Model Monitor and Debugger" 
 このリポジトリには、「Amazon SageMaker Model Monitor と Debugger を使って不正な予測を検知して分析する」のノートブックとスクリプトが含まれています。
 
 [SageMaker notebook instance](https://docs.aws.amazon.com/sagemaker/latest/dg/howitworks-create-ws.html)を作成し、このリポジトリをcloneしてください。
