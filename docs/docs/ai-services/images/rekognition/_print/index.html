@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="generator" content="Hugo 0.80.0" /><link rel="alternate" type="application/rss&#43;xml" href="https://aws-samples.github.io/amazon-sagemaker-examples-jp/index.xml">
+<meta name="generator" content="Hugo 0.80.0" /><link rel="canonical" type="text/html" href="https://aws-samples.github.io/amazon-sagemaker-examples-jp/docs/ai-services/images/rekognition/">
 <META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
 
 
@@ -18,18 +18,19 @@
 <link rel="icon" type="image/png" href="https://aws-samples.github.io/amazon-sagemaker-examples-jp/favicons/android-144x144.png" sizes="144x144">
 <link rel="icon" type="image/png" href="https://aws-samples.github.io/amazon-sagemaker-examples-jp/favicons/android-192x192.png" sizes="192x192">
 
-<title>ML portal</title><meta property="og:title" content="AWS Machine Learning" />
-<meta property="og:description" content="" />
+<title>Amazon Rekognition | ML portal</title><meta property="og:title" content="Amazon Rekognition" />
+<meta property="og:description" content="画像や動画の分析を行うための AI サービスです。
+" />
 <meta property="og:type" content="website" />
-<meta property="og:url" content="https://aws-samples.github.io/amazon-sagemaker-examples-jp/" />
-<meta property="og:image" content="https://aws-samples.github.io/amazon-sagemaker-examples-jp/featured-background.png"/>
-
-<meta itemprop="name" content="AWS Machine Learning">
-<meta itemprop="description" content="">
-<meta name="twitter:card" content="summary_large_image"/>
-<meta name="twitter:image" content="https://aws-samples.github.io/amazon-sagemaker-examples-jp/featured-background.png"/>
-<meta name="twitter:title" content="AWS Machine Learning"/>
-<meta name="twitter:description" content=""/>
+<meta property="og:url" content="https://aws-samples.github.io/amazon-sagemaker-examples-jp/docs/ai-services/images/rekognition/" />
+<meta property="og:updated_time" content="2021-01-05T00:00:00+00:00" />
+<meta itemprop="name" content="Amazon Rekognition">
+<meta itemprop="description" content="画像や動画の分析を行うための AI サービスです。
+">
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Amazon Rekognition"/>
+<meta name="twitter:description" content="画像や動画の分析を行うための AI サービスです。
+"/>
 
 
 
@@ -48,10 +49,10 @@
 
 
   </head>
-  <body class="td-home">
+  <body class="td-section">
     <header>
       
-<nav class="js-navbar-scroll navbar navbar-expand navbar-dark  td-navbar-cover flex-column flex-md-row td-navbar">
+<nav class="js-navbar-scroll navbar navbar-expand navbar-dark flex-column flex-md-row td-navbar">
         <a class="navbar-brand" href="https://aws-samples.github.io/amazon-sagemaker-examples-jp/">
 		<span class="navbar-logo"><svg width="30" height="30" viewBox="0 0 453 453" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><title>Group 3</title><desc>Created with Sketch.</desc><defs><path d="M98.5346185 78.885366C117.316875 72.6943974 137.907366 69.2779922 159.5 69.2779922S201.683125 72.6943974 220.465382 78.885366L269.102061 8.61906888C275.388575-.463172918 287.847413-2.72955786 296.929655 3.55695642 301.867043 6.97449999 305.007625 12.4296154 305.483904 18.4154786L318.465843 181.572298C318.567107 182.844984 318.546905 184.099306 318.41496 185.32386 318.80233 188.934245 319 192.587738 319 196.277992 319 266.418155 247.589418 323.277992 159.5 323.277992 71.4105824 323.277992.0 266.418155.0 196.277992.0 192.587738.197670371 188.934245.585040205 185.32386.453095453 184.099306.432893346 182.844984.534157463 181.572298L13.5160962 18.4154786C13.9923749 12.4296154 17.1329573 6.97449999 22.0703448 3.55695642 31.1525866-2.72955786 43.611425-.463172918 49.8979393 8.61906888L98.5346185 78.885366z" id="path-1"/></defs><g id="sagemaker" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><g id="Group"><g id="Group-3"><rect id="Rectangle" stroke="#979797" fill="#d8d8d8" x=".5" y=".5" width="452" height="452"/><g id="sg_logo-copy" transform="translate(66.000000, 72.722008)"><mask id="mask-2" fill="#fff"><use xlink:href="#path-1"/></mask><g id="Mask"/><g mask="url(#mask-2)"><g transform="translate(9.000000, 24.277992)"><polygon id="Path" stroke="#247e70" stroke-width="12" fill="none" stroke-linecap="round" stroke-linejoin="round" points="38.3790511 44.2609176 107.571211 2.61899877e-14 153.397596 29.313972 199.860719 8.46545056e-15 268.890573 44.2609176 268.890573 88.5280708 308 119.095416 308 186.590509 268.890573 217.56941 268.890573 260.527069 191.870285 305 154.995683 284.160329 115.561645 305 38.3790511 262.123405 38.3790511 217.56941 0 186.590509 0 119.095416 38.3790511 90.1244071"/><polyline id="Path-2" stroke="#247e70" stroke-width="12" fill="none" stroke-linecap="round" points="153 29 153 111.919901 194 136"/><path d="M203 66h66" id="Path-3" stroke="#247e70" stroke-width="12" fill="none" stroke-linecap="round"/><path d="M253 166l44 27" id="Path-4" stroke="#247e70" stroke-width="12" fill="none" stroke-linecap="round"/><polyline id="Path-5" stroke="#247e70" stroke-width="12" fill="none" stroke-linecap="round" points="131 146 154.01668 160.434972 155 284"/><path d="M78 245l76-44" id="Path-6" stroke="#247e70" stroke-width="12" fill="none" stroke-linecap="round"/><polyline id="Path-7" stroke="#247e70" stroke-width="12" fill="none" stroke-linecap="round" points="44 180.12816 78.2344246 159 113 176.928648 113 224"/><polyline id="Path-8" stroke="#247e70" stroke-width="12" fill="none" stroke-linecap="round" points="116 52 116 94.0457283 78.207455 115 39 88.436655"/><path d="M78 115v46" id="Path-9" stroke="#247e70" stroke-width="12" fill="none" stroke-linecap="round"/><path d="M40 136 0 160" id="Path-10" stroke="#247e70" stroke-width="12" fill="none" stroke-linecap="round"/><path d="M204 231H155" id="Path-11" stroke="#247e70" stroke-width="12" fill="none" stroke-linecap="round"/><path d="M117 260 80 282" id="Path-12" stroke="#247e70" stroke-width="12" fill="none" stroke-linecap="round"/><path d="M78 201 41 223" id="Path-13" stroke="#247e70" stroke-width="12" fill="none" stroke-linecap="round"/><path d="M77 73V20" id="Path-14" stroke="#247e70" stroke-width="12" fill="none" stroke-linecap="round"/><circle id="Oval" stroke="none" fill="#247e70" fill-rule="evenodd" cx="201" cy="66" r="15"/><circle id="Oval-Copy" stroke="none" fill="#247e70" fill-rule="evenodd" cx="194" cy="137" r="15"/><circle id="Oval-Copy-2" stroke="none" fill="#247e70" fill-rule="evenodd" cx="253" cy="166" r="15"/><circle id="Oval-Copy-3" stroke="none" fill="#247e70" fill-rule="evenodd" cx="201" cy="232" r="15"/></g></g></g><path d="M167.534618 151.885366C186.316875 145.694397 206.907366 142.277992 228.5 142.277992S270.683125 145.694397 289.465382 151.885366L338.102061 81.6190689C344.388575 72.5368271 356.847413 70.2704421 365.929655 76.5569564 370.867043 79.9745 374.007625 85.4296154 374.483904 91.4154786L387.465843 254.572298C387.567107 255.844984 387.546905 257.099306 387.41496 258.32386 387.80233 261.934245 388 265.587738 388 269.277992c0 70.14016300000003-71.41058199999998 127-159.5 127-88.089418.0-159.5-56.85983699999997-159.5-127C69 265.587738 69.1976704 261.934245 69.5850402 258.32386 69.4530955 257.099306 69.4328933 255.844984 69.5341575 254.572298L82.5160962 91.4154786C82.9923749 85.4296154 86.1329573 79.9745 91.0703448 76.5569564 100.152587 70.2704421 112.611425 72.5368271 118.897939 81.6190689l48.636679 70.2662971z" id="Path" stroke="#353535" stroke-width="21"/></g></g></g></svg></span><span class="text-uppercase font-weight-bold">ML portal</span>
 	</a>
@@ -76,7 +77,7 @@
 				
 				
 				
-				<a  class="nav-link" href="https://aws-samples.github.io/amazon-sagemaker-examples-jp/docs/" ><span>Documentation</span></a>
+				<a  class="nav-link active" href="https://aws-samples.github.io/amazon-sagemaker-examples-jp/docs/" ><span class="active">Documentation</span></a>
 			</li>
 			
 			<li class="nav-item mr-4 mb-2 mb-lg-0">
@@ -110,195 +111,122 @@
 </nav>
 
     </header>
-    <div class="container-fluid td-default td-outer">
-      <main role="main" class="td-main">
-        
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<link rel="preload" as="image" href="https://aws-samples.github.io/amazon-sagemaker-examples-jp/featured-background_hu8a39ca4bb86027cf9971f48ddb45157c_1460964_960x540_fill_catmullrom_top_2.png" media="(max-width: 1200px)">
-<link rel="preload" as="image" href="https://aws-samples.github.io/amazon-sagemaker-examples-jp/featured-background_hu8a39ca4bb86027cf9971f48ddb45157c_1460964_1920x1080_fill_catmullrom_top_2.png" media="(min-width: 1200px)">
-<style>
-#td-cover-block-0 {
-    background-image: url(/featured-background_hu8a39ca4bb86027cf9971f48ddb45157c_1460964_960x540_fill_catmullrom_top_2.png); 
-}
-@media only screen and (min-width: 1200px) {
-    #td-cover-block-0 {
-        background-image: url(/featured-background_hu8a39ca4bb86027cf9971f48ddb45157c_1460964_1920x1080_fill_catmullrom_top_2.png); 
-    }
-}
-</style>
-
-<section id="td-cover-block-0" class="row td-cover-block td-cover-block--height-min js-td-cover td-overlay td-overlay--dark -bg-green">
-  <div class="container td-overlay__inner">
-    <div class="row">
-      <div class="col-12">
-        <div class="text-center">
-          <h1 class="display-1 mt-0 mt-md-7 pb-4">AWS Machine Learning Portal Site</h1>
-          
-          <div class="pt-3 lead">
+    <div class="container-fluid td-outer">
+      <div class="td-main">
+        <div class="row flex-xl-nowrap">
+          <div class="col-12 col-md-3 col-xl-2 td-sidebar d-print-none">
+          </div>
+          <div class="d-none d-xl-block col-xl-2 td-toc d-print-none">
+          </div>
+          <main class="col-12 col-md-9 col-xl-8 pl-md-5" role="main">
             
-                
-<div class="mx-auto">
-	<p class="lead mt-7">こちらは AWS の機械学習サービスのポータルサイトです。<br>
-		サービスの説明や使い方の説明やサンプルコードなどを公開しています。</p>
+
+
+
+
+<div class="td-content">
+<div class="pageinfo pageinfo-primary d-print-none">
+<p>
+This the multi-page printable view of this section.
+<a href="#" onclick="print();return false;">Click here to print</a>.
+</p><p>
+<a href="https://aws-samples.github.io/amazon-sagemaker-examples-jp/docs/ai-services/images/rekognition/">Return to the regular view of this page</a>.
+</p>
 </div>
 
 
-            
-          </div>
+
+<h1 class="title">Amazon Rekognition</h1>
+<div class="lead">画像や動画の分析を行うための AI サービスです。</div>
+
+
+
+
+    <ul>
+    
+  
+  
+  
+  
+
+  
+
+    </ul>
+
+
+<div class="content">
+      <h2 id="一般的なシーン認識物体検知を行う">一般的なシーン認識・物体検知を行う</h2>
+<p>画像のどこに人、車、猫などの一般的な被写体が写っているかを分析したり、写真に何が写っているのかを分析したりできます。AWS コンソールから画像をアップロードして簡単に機能を試すことができます。</p>
+<p><img src="rek-obj.png" alt="Rekognition"></p>
+<p><a href="https://ap-northeast-1.console.aws.amazon.com/rekognition/home?region=ap-northeast-1#/label-detection"
+  
+  
+    target="_blank" rel="noopener"
+  
+>
+  AWS コンソールへのリンク（東京リージョン）
+</a></p>
+<h3 id="参考情報">参考情報</h3>
+<p><a href="https://aws.amazon.com/jp/rekognition/getting-started/"
+  
+  
+    target="_blank" rel="noopener"
+  
+>
+  Amazon Rekognition の開始方法
+</a><br>
+Amazon Rekognition の利用を始めるためのドキュメントや、いくつかのユースケースを実現するための動画が公開されています。</p>
+<h2 id="独自のシーン認識物体検知モデルを作る">独自のシーン認識・物体検知モデルを作る</h2>
+<p>Amazon Rekognition Custom Labels という機能を使って、お客様がお持ちの画像を使って、独自のシーン認識（画像分類）や物体検知モデルをノーコードで作成いただけます。</p>
+<p>Amazon SageMaker Ground Truth で画像のラベリングを行い、その結果を使って Amazon Rekognition Custom Labels でモデルを作成することができます。</p>
+<h3 id="参考情報-1">参考情報</h3>
+<p><a href="https://aws.amazon.com/jp/builders-flash/202003/sagemaker-groundtruth-cat/"
+  
+  
+    target="_blank" rel="noopener"
+  
+>
+  【Nyantech ハンズオンシリーズ】機械学習を使って写真に写っている猫を見分けてみよう！
+</a><br>
+Amazon SageMaker Ground Truth で画像のラベリングをし、Amazon Rekognition Custom Labels を使って猫のタマとミケを見分ける機械学習モデルを作る方法がハンズオン形式で説明されています。</p>
+<p><a href="https://aws.amazon.com/jp/blogs/news/detecting-playful-animal-behavior-in-videos-using-amazon-rekognition-custom-labels/"
+  
+  
+    target="_blank" rel="noopener"
+  
+>
+  Amazon Rekognition Custom Labelsを利用した動物の特徴的な行動検出
+</a>
+猫の動画を題材に、猫パンチをしているかしていないかを見分けるモデルを作っています。</p>
+<p><a href="http://www.youtube.com/watch?v=h02X4ZH1wQI"
+  
+  
+    target="_blank" rel="noopener"
+  
+>
+  <img src="http://img.youtube.com/vi/h02X4ZH1wQI/0.jpg" alt="">
+</a></p>
+<h2 id="heading"></h2>
+
+</div>
+</div>
+
+
+  
+  
+  
+  
+
+  
+  
+
+  
+
+
+
+          </main>
         </div>
       </div>
-    </div>
-  </div>
-  
-</section>
-
-
-
-
-
-
-
- 
-<a id="td-block-1" class="td-offset-anchor"></a>
-<section class="row td-box td-box--white td-box--gradient td-box--height-auto">
-	<div class="col">
-		<div class="row " >
-			
-				
-
-
-
-<div class="col-lg-4 mb-5 mb-lg-0 text-center ">
-  <div class="mb-4 h1">
-    <i class="fab fa-aws "></i>
-  </div>
-  <h4 class="h3">チュートリアル</h4>
-  <p class="mb-0"><p>AWS で機械学習を始める方法をご紹介します。
-<a href="https://aws-samples.github.io/amazon-sagemaker-examples-jp/docs/ml-services/"
-  
-  
-    target="_blank" rel="noopener"
-  
->
-  こちらをクリック
-</a></p>
-</p>
-  
-</div>
-
-
-
-
-
-<div class="col-lg-4 mb-5 mb-lg-0 text-center ">
-  <div class="mb-4 h1">
-    <i class="fas fa-lightbulb "></i>
-  </div>
-  <h4 class="h3">AI サービスを活用する</h4>
-  <p class="mb-0"><p>AWS の AI サービスと使い方をご紹介します。
-<a href="https://aws-samples.github.io/amazon-sagemaker-examples-jp/docs/ai-services/"
-  
-  
-    target="_blank" rel="noopener"
-  
->
-  こちらをクリック
-</a></p>
-</p>
-  
-</div>
-
-
-
-
-
-<div class="col-lg-4 mb-5 mb-lg-0 text-center ">
-  <div class="mb-4 h1">
-    <i class="fas fa-wrench "></i>
-  </div>
-  <h4 class="h3">自分で機械学習モデルを作る</h4>
-  <p class="mb-0"><p>Amazon SageMaker を使って機械学習プロジェクトを行うための情報を提供します。
-<a href="https://aws-samples.github.io/amazon-sagemaker-examples-jp/docs/usecases/"
-  
-  
-    target="_blank" rel="noopener"
-  
->
-  こちらをクリック
-</a></p>
-</p>
-  
-</div>
-
-
-
-
-
-
-			
-		</div>
-	</div>
-</section>
-
-
-
-
-
- 
-<a id="td-block-2" class="td-offset-anchor"></a>
-<section class="row td-box td-box--light td-box--gradient td-box--height-auto">
-	<div class="col">
-		<div class="row " >
-			
-				
-
-
-<div class="col-lg-4 mb-5 mb-lg-0 text-center ">
-  <div class="mb-4 h1">
-    <i class="fab fa-twitter "></i>
-  </div>
-  <h4 class="h3">知る</h4>
-  <p class="mb-0"><p>サービスリリースやイベントの情報はこちらから</p>
-</p>
-  <p><a href="https://twitter.com/awscloud_jp?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor">Read more …</a></p>
-</div>
-
-
-
-<div class="col-lg-4 mb-5 mb-lg-0 text-center ">
-  <div class="mb-4 h1">
-    <i class="fab fa-twitter "></i>
-  </div>
-  <h4 class="h3">知る</h4>
-  <p class="mb-0"><p>サービスリリースやイベントの情報はこちらから</p>
-</p>
-  <p><a href="https://twitter.com/awscloud_jp?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor">Read more …</a></p>
-</div>
-
-
-			
-		</div>
-	</div>
-</section>
-
-
-
-
-      </main>
       
 <footer class="bg-dark py-5 row d-print-none">
   <div class="container-fluid mx-sm-5">
