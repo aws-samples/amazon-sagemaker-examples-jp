@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="generator" content="Hugo 0.80.0" /><link rel="alternate" type="text/html" href="https://aws-samples.github.io/amazon-sagemaker-examples-jp/docs/ml-services/sagemaker-dive-deep/_print/">
+<meta name="generator" content="Hugo 0.80.0" /><link rel="canonical" type="text/html" href="https://aws-samples.github.io/amazon-sagemaker-examples-jp/docs/ai-services/table-data/">
 <META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
 
 
@@ -18,18 +18,18 @@
 <link rel="icon" type="image/png" href="https://aws-samples.github.io/amazon-sagemaker-examples-jp/favicons/android-144x144.png" sizes="144x144">
 <link rel="icon" type="image/png" href="https://aws-samples.github.io/amazon-sagemaker-examples-jp/favicons/android-192x192.png" sizes="192x192">
 
-<title>Amazon SageMaker を深く理解する | ML portal</title><meta property="og:title" content="Amazon SageMaker を深く理解する" />
-<meta property="og:description" content="Amazon SageMaker の詳細な使い方をご紹介します。
+<title>テーブルデータを使う | ML portal</title><meta property="og:title" content="テーブルデータを使う" />
+<meta property="og:description" content="テーブルデータを使って予測・分類を行う AI サービスをご紹介します。
 " />
 <meta property="og:type" content="website" />
-<meta property="og:url" content="https://aws-samples.github.io/amazon-sagemaker-examples-jp/docs/ml-services/sagemaker-dive-deep/" />
-
-<meta itemprop="name" content="Amazon SageMaker を深く理解する">
-<meta itemprop="description" content="Amazon SageMaker の詳細な使い方をご紹介します。
+<meta property="og:url" content="https://aws-samples.github.io/amazon-sagemaker-examples-jp/docs/ai-services/table-data/" />
+<meta property="og:updated_time" content="2021-01-05T00:00:00+00:00" />
+<meta itemprop="name" content="テーブルデータを使う">
+<meta itemprop="description" content="テーブルデータを使って予測・分類を行う AI サービスをご紹介します。
 ">
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Amazon SageMaker を深く理解する"/>
-<meta name="twitter:description" content="Amazon SageMaker の詳細な使い方をご紹介します。
+<meta name="twitter:title" content="テーブルデータを使う"/>
+<meta name="twitter:description" content="テーブルデータを使って予測・分類を行う AI サービスをご紹介します。
 "/>
 
 
@@ -115,504 +115,62 @@
       <div class="td-main">
         <div class="row flex-xl-nowrap">
           <div class="col-12 col-md-3 col-xl-2 td-sidebar d-print-none">
-            
-
-
-
-
-<div id="td-sidebar-menu" class="td-sidebar__inner">
-  
-  <form class="td-sidebar__search d-flex align-items-center">
-    
-<input type="search" class="form-control td-search-input" placeholder="&#xf002 Search this site…" aria-label="Search this site…" autocomplete="off">
-
-
-    <button class="btn btn-link td-sidebar__toggle d-md-none p-0 ml-3 fas fa-bars" type="button" data-toggle="collapse" data-target="#td-section-nav" aria-controls="td-docs-nav" aria-expanded="false" aria-label="Toggle section navigation">
-    </button>
-  </form>
-  
-  <nav class="collapse td-sidebar-nav" id="td-section-nav">
-    
-    
-    
-
-
-
-
-
-
-<ul class="td-sidebar-nav__section pr-md-3">
-  <li class="td-sidebar-nav__section-title">
-    <a  href="https://aws-samples.github.io/amazon-sagemaker-examples-jp/docs/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">Documentation</a>
-  </li>
-  <ul>
-    <li class="collapse show" id="docs">
-      
-      
-      
-      
-        
-          
-
-
-
-
-
-
-<ul class="td-sidebar-nav__section pr-md-3">
-  <li class="td-sidebar-nav__section-title">
-    <a  href="https://aws-samples.github.io/amazon-sagemaker-examples-jp/docs/usecases/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section">ユースケースに応じた開発方法</a>
-  </li>
-  <ul>
-    <li class="collapse " id="docsusecases">
-      
-      
-      
-      
-        
-          
-          
-          <a class="td-sidebar-link td-sidebar-link__page " id="m-docsusecasestable-data" href="https://aws-samples.github.io/amazon-sagemaker-examples-jp/docs/usecases/table-data/">テーブルデータを使う</a>
-        
-      
-      
-      
-        
-          
-          
-          <a class="td-sidebar-link td-sidebar-link__page " id="m-docsusecasesimage" href="https://aws-samples.github.io/amazon-sagemaker-examples-jp/docs/usecases/image/">画像を使う</a>
-        
-      
-      
-      
-        
-          
-          
-          <a class="td-sidebar-link td-sidebar-link__page " id="m-docsusecasesnlp" href="https://aws-samples.github.io/amazon-sagemaker-examples-jp/docs/usecases/nlp/">自然言語を使う</a>
-        
-      
-      
-    </li>
-  </ul>
-</ul>
-
-        
-      
-      
-      
-        
-          
-
-
-
-
-
-
-<ul class="td-sidebar-nav__section pr-md-3">
-  <li class="td-sidebar-nav__section-title">
-    <a  href="https://aws-samples.github.io/amazon-sagemaker-examples-jp/docs/ai-services/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section">AI サービスを活用する</a>
-  </li>
-  <ul>
-    <li class="collapse " id="docsai-services">
-      
-      
-      
-      
-        
-          
-
-
-
-
-
-
-<ul class="td-sidebar-nav__section pr-md-3">
-  <li class="td-sidebar-nav__section-title">
-    <a  href="https://aws-samples.github.io/amazon-sagemaker-examples-jp/docs/ai-services/images/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section">画像を使う</a>
-  </li>
-  <ul>
-    <li class="collapse " id="docsai-servicesimages">
-      
-      
-      
-      
-        
-          
-
-
-
-
-
-
-<ul class="td-sidebar-nav__section pr-md-3">
-  <li class="td-sidebar-nav__section-title">
-    <a  href="https://aws-samples.github.io/amazon-sagemaker-examples-jp/docs/ai-services/images/rekognition/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section">Amazon Rekognition</a>
-  </li>
-  <ul>
-    <li class="collapse " id="docsai-servicesimagesrekognition">
-      
-      
-      
-    </li>
-  </ul>
-</ul>
-
-        
-      
-      
-      
-        
-          
-
-
-
-
-
-
-<ul class="td-sidebar-nav__section pr-md-3">
-  <li class="td-sidebar-nav__section-title">
-    <a  href="https://aws-samples.github.io/amazon-sagemaker-examples-jp/docs/ai-services/images/textract/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section">Amazon Textract</a>
-  </li>
-  <ul>
-    <li class="collapse " id="docsai-servicesimagestextract">
-      
-      
-      
-    </li>
-  </ul>
-</ul>
-
-        
-      
-      
-    </li>
-  </ul>
-</ul>
-
-        
-      
-      
-      
-        
-          
-
-
-
-
-
-
-<ul class="td-sidebar-nav__section pr-md-3">
-  <li class="td-sidebar-nav__section-title">
-    <a  href="https://aws-samples.github.io/amazon-sagemaker-examples-jp/docs/ai-services/text/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section">テキストを使う</a>
-  </li>
-  <ul>
-    <li class="collapse " id="docsai-servicestext">
-      
-      
-      
-    </li>
-  </ul>
-</ul>
-
-        
-      
-      
-      
-        
-          
-
-
-
-
-
-
-<ul class="td-sidebar-nav__section pr-md-3">
-  <li class="td-sidebar-nav__section-title">
-    <a  href="https://aws-samples.github.io/amazon-sagemaker-examples-jp/docs/ai-services/table-data/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section">テーブルデータを使う</a>
-  </li>
-  <ul>
-    <li class="collapse " id="docsai-servicestable-data">
-      
-      
-      
-    </li>
-  </ul>
-</ul>
-
-        
-      
-      
-      
-        
-          
-
-
-
-
-
-
-<ul class="td-sidebar-nav__section pr-md-3">
-  <li class="td-sidebar-nav__section-title">
-    <a  href="https://aws-samples.github.io/amazon-sagemaker-examples-jp/docs/ai-services/voice/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section">音声を使う</a>
-  </li>
-  <ul>
-    <li class="collapse " id="docsai-servicesvoice">
-      
-      
-      
-    </li>
-  </ul>
-</ul>
-
-        
-      
-      
-    </li>
-  </ul>
-</ul>
-
-        
-      
-      
-      
-        
-          
-
-
-
-
-
-
-<ul class="td-sidebar-nav__section pr-md-3">
-  <li class="td-sidebar-nav__section-title">
-    <a  href="https://aws-samples.github.io/amazon-sagemaker-examples-jp/docs/ml-services/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">自分で機械学習モデルを作る</a>
-  </li>
-  <ul>
-    <li class="collapse show" id="docsml-services">
-      
-      
-      
-      
-        
-          
-
-
-
-
-
-
-<ul class="td-sidebar-nav__section pr-md-3">
-  <li class="td-sidebar-nav__section-title">
-    <a  href="https://aws-samples.github.io/amazon-sagemaker-examples-jp/docs/ml-services/sagemaker-tutorial/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section">Amazon SageMaker 入門</a>
-  </li>
-  <ul>
-    <li class="collapse " id="docsml-servicessagemaker-tutorial">
-      
-      
-      
-    </li>
-  </ul>
-</ul>
-
-        
-      
-      
-      
-        
-          
-
-
-
-
-
-
-<ul class="td-sidebar-nav__section pr-md-3">
-  <li class="td-sidebar-nav__section-title">
-    <a  href="https://aws-samples.github.io/amazon-sagemaker-examples-jp/docs/ml-services/sagemaker-dive-deep/" class="align-left pl-0 pr-2 active td-sidebar-link td-sidebar-link__section">Amazon SageMaker を深く理解する</a>
-  </li>
-  <ul>
-    <li class="collapse show" id="docsml-servicessagemaker-dive-deep">
-      
-      
-      
-    </li>
-  </ul>
-</ul>
-
-        
-      
-      
-    </li>
-  </ul>
-</ul>
-
-        
-      
-      
-    </li>
-  </ul>
-</ul>
-
-  </nav>
-</div>
-
-
-
-
           </div>
-
+          <div class="d-none d-xl-block col-xl-2 td-toc d-print-none">
+          </div>
           <main class="col-12 col-md-9 col-xl-8 pl-md-5" role="main">
             
+
+
+
+
+<div class="td-content">
+<div class="pageinfo pageinfo-primary d-print-none">
+<p>
+This the multi-page printable view of this section.
+<a href="#" onclick="print();return false;">Click here to print</a>.
+</p><p>
+<a href="https://aws-samples.github.io/amazon-sagemaker-examples-jp/docs/ai-services/table-data/">Return to the regular view of this page</a>.
+</p>
+</div>
+
+
+
+<h1 class="title">テーブルデータを使う</h1>
+<div class="lead">テーブルデータを使って予測・分類を行う AI サービスをご紹介します。</div>
+
+
+
+
+    <ul>
+    
+  
+  
+  
   
 
-            <nav aria-label="breadcrumb" class="d-none d-md-block d-print-none">
-	<ol class="breadcrumb spb-1">
-		
+  
+
+    </ul>
 
 
-
-
-
-
-
-
-
-
-<li class="breadcrumb-item" >
-	<a href="https://aws-samples.github.io/amazon-sagemaker-examples-jp/docs/">Documentation</a>
-</li>
-
-
-
-
-<li class="breadcrumb-item" >
-	<a href="https://aws-samples.github.io/amazon-sagemaker-examples-jp/docs/ml-services/">自分で機械学習モデルを作る</a>
-</li>
-
-
-
-
-<li class="breadcrumb-item active" aria-current="page">
-	<a href="https://aws-samples.github.io/amazon-sagemaker-examples-jp/docs/ml-services/sagemaker-dive-deep/">Amazon SageMaker を深く理解する</a>
-</li>
-
-	</ol>
-</nav	>
-
-            
-<div class="td-content">
-	<h1>Amazon SageMaker を深く理解する</h1>
-        <div class="lead">Amazon SageMaker の詳細な使い方をご紹介します。</div>
-	
-	
-        <div class="section-index">
-    
-    
-    
-    
-    
-    <hr class="panel-line">
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-    
-</div>
-
-	
-		<style>
-  .feedback--answer {
-    display: inline-block;
-  }
-  .feedback--answer-no {
-    margin-left: 1em;
-  }
-  .feedback--response {
-    display: none;
-    margin-top: 1em;
-  }
-  .feedback--response__visible {
-    display: block;
-  }
-</style>
-<div class="d-print-none">
-<h2 class="feedback--title">Feedback</h2>
-<p class="feedback--question">Was this page helpful?</p>
-<button class="feedback--answer feedback--answer-yes">Yes</button>
-<button class="feedback--answer feedback--answer-no">No</button>
-<p class="feedback--response feedback--response-yes">
-  Glad to hear it! Please <a href="https://github.com/USERNAME/REPOSITORY/issues/new">tell us how we can improve</a>.
-</p>
-<p class="feedback--response feedback--response-no">
-  Sorry to hear that. Please <a href="https://github.com/USERNAME/REPOSITORY/issues/new">tell us how we can improve</a>.
-</p>
-</div>
-<script>
-  const yesButton = document.querySelector('.feedback--answer-yes');
-  const noButton = document.querySelector('.feedback--answer-no');
-  const yesResponse = document.querySelector('.feedback--response-yes');
-  const noResponse = document.querySelector('.feedback--response-no');
-  const disableButtons = () => {
-    yesButton.disabled = true;
-    noButton.disabled = true;
-  };
-  const sendFeedback = (value) => {
-    if (typeof ga !== 'function') return;
-    const args = {
-      command: 'send',
-      hitType: 'event',
-      category: 'Helpful',
-      action: 'click',
-      label: window.location.pathname,
-      value: value
-    };
-    ga(args.command, args.hitType, args.category, args.action, args.label, args.value);
-  };
-  yesButton.addEventListener('click', () => {
-    yesResponse.classList.add('feedback--response__visible');
-    disableButtons();
-    sendFeedback(1);
-  });
-  noButton.addEventListener('click', () => {
-    noResponse.classList.add('feedback--response__visible');
-    disableButtons();
-    sendFeedback(0);
-  });
-</script>
-
-		<br />
-	
-	
-	<div class="text-muted mt-5 pt-3 border-top">Last modified March 4, 2021: <a  href="https://github.com/aws-samples/amazon-sagemaker-examples-jp/commit/76a7f65a102fa3aae36aa42b98b28a16348d2e40">mod docsy structure (76a7f65)</a>
+<div class="content">
+      
 </div>
 </div>
+
+
+  
+  
+  
+  
+
+  
+  
+
+  
+
+
 
           </main>
         </div>

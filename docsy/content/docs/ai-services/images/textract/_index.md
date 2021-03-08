@@ -1,7 +1,7 @@
 
 ---
 title: "Amazon Textract"
-weight: 1
+weight: 2
 date: 2021-01-05
 description: >
   スキャンしたドキュメントなどの画像からテキストを抽出するための AI サービスです。
