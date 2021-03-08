@@ -8,6 +8,11 @@
   </url>
   
   <url>
+    <loc>https://aws-samples.github.io/amazon-sagemaker-examples-jp/docs/ai-services/images/textract/</loc>
+    <lastmod>2021-01-05T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://aws-samples.github.io/amazon-sagemaker-examples-jp/docs/ai-services/images/</loc>
     <lastmod>2021-03-08T11:24:33+09:00</lastmod>
   </url>
@@ -75,11 +80,6 @@
   <url>
     <loc>https://aws-samples.github.io/amazon-sagemaker-examples-jp/blog/2018/10/06/the-second-blog-post/</loc>
     <lastmod>2021-02-06T20:24:17+09:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://aws-samples.github.io/amazon-sagemaker-examples-jp/docs/ai-services/pubref1/</loc>
-    <lastmod>2021-03-04T13:20:16+09:00</lastmod>
   </url>
   
   <url>
