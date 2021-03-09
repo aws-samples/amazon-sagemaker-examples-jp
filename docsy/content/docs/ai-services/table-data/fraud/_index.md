@@ -11,5 +11,5 @@ description: >
 
 ### 参考情報
 
-[開発者ガイド]https://docs.aws.amazon.com/ja_jp/frauddetector/latest/ug/what-is-frauddetector.html)<br>
+[開発者ガイド](https://docs.aws.amazon.com/ja_jp/frauddetector/latest/ug/what-is-frauddetector.html)<br>
 Amazon Fraud Detector の開発者ガイドです。
