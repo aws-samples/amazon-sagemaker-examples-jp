@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="generator" content="Hugo 0.80.0" /><link rel="alternate" type="text/html" href="https://aws-samples.github.io/amazon-sagemaker-examples-jp/docs/ai-services/table-data/_print/">
+<meta name="generator" content="Hugo 0.80.0" /><link rel="alternate" type="text/html" href="https://aws-samples.github.io/amazon-sagemaker-examples-jp/docs/ai-services/text/comprehend/_print/">
 <META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
 
 
@@ -18,18 +18,18 @@
 <link rel="icon" type="image/png" href="https://aws-samples.github.io/amazon-sagemaker-examples-jp/favicons/android-144x144.png" sizes="144x144">
 <link rel="icon" type="image/png" href="https://aws-samples.github.io/amazon-sagemaker-examples-jp/favicons/android-192x192.png" sizes="192x192">
 
-<title>テーブルデータを使う | ML portal</title><meta property="og:title" content="テーブルデータを使う" />
-<meta property="og:description" content="テーブルデータを使って予測・分類を行う AI サービスをご紹介します。
+<title>Amazon Comprehend | ML portal</title><meta property="og:title" content="Amazon Comprehend" />
+<meta property="og:description" content="テキストの内容を分析するための AI サービスです。
 " />
 <meta property="og:type" content="website" />
-<meta property="og:url" content="https://aws-samples.github.io/amazon-sagemaker-examples-jp/docs/ai-services/table-data/" />
-<meta property="og:updated_time" content="2021-03-08T19:18:54+09:00" />
-<meta itemprop="name" content="テーブルデータを使う">
-<meta itemprop="description" content="テーブルデータを使って予測・分類を行う AI サービスをご紹介します。
+<meta property="og:url" content="https://aws-samples.github.io/amazon-sagemaker-examples-jp/docs/ai-services/text/comprehend/" />
+<meta property="og:updated_time" content="2021-01-05T00:00:00+00:00" />
+<meta itemprop="name" content="Amazon Comprehend">
+<meta itemprop="description" content="テキストの内容を分析するための AI サービスです。
 ">
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="テーブルデータを使う"/>
-<meta name="twitter:description" content="テーブルデータを使って予測・分類を行う AI サービスをご紹介します。
+<meta name="twitter:title" content="Amazon Comprehend"/>
+<meta name="twitter:description" content="テキストの内容を分析するための AI サービスです。
 "/>
 
 
@@ -303,10 +303,10 @@
 
 <ul class="td-sidebar-nav__section pr-md-3">
   <li class="td-sidebar-nav__section-title">
-    <a  href="https://aws-samples.github.io/amazon-sagemaker-examples-jp/docs/ai-services/text/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section">テキストを使う</a>
+    <a  href="https://aws-samples.github.io/amazon-sagemaker-examples-jp/docs/ai-services/text/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">テキストを使う</a>
   </li>
   <ul>
-    <li class="collapse " id="docsai-servicestext">
+    <li class="collapse show" id="docsai-servicestext">
       
       
       
@@ -321,10 +321,10 @@
 
 <ul class="td-sidebar-nav__section pr-md-3">
   <li class="td-sidebar-nav__section-title">
-    <a  href="https://aws-samples.github.io/amazon-sagemaker-examples-jp/docs/ai-services/text/comprehend/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section">Amazon Comprehend</a>
+    <a  href="https://aws-samples.github.io/amazon-sagemaker-examples-jp/docs/ai-services/text/comprehend/" class="align-left pl-0 pr-2 active td-sidebar-link td-sidebar-link__section">Amazon Comprehend</a>
   </li>
   <ul>
-    <li class="collapse " id="docsai-servicestextcomprehend">
+    <li class="collapse show" id="docsai-servicestextcomprehend">
       
       
       
@@ -403,10 +403,10 @@
 
 <ul class="td-sidebar-nav__section pr-md-3">
   <li class="td-sidebar-nav__section-title">
-    <a  href="https://aws-samples.github.io/amazon-sagemaker-examples-jp/docs/ai-services/table-data/" class="align-left pl-0 pr-2 active td-sidebar-link td-sidebar-link__section">テーブルデータを使う</a>
+    <a  href="https://aws-samples.github.io/amazon-sagemaker-examples-jp/docs/ai-services/table-data/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section">テーブルデータを使う</a>
   </li>
   <ul>
-    <li class="collapse show" id="docsai-servicestable-data">
+    <li class="collapse " id="docsai-servicestable-data">
       
       
       
@@ -421,10 +421,10 @@
 
 <ul class="td-sidebar-nav__section pr-md-3">
   <li class="td-sidebar-nav__section-title">
-    <a  href="https://aws-samples.github.io/amazon-sagemaker-examples-jp/docs/ai-services/table-data/forecast/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">Amazon Forecast</a>
+    <a  href="https://aws-samples.github.io/amazon-sagemaker-examples-jp/docs/ai-services/table-data/forecast/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section">Amazon Forecast</a>
   </li>
   <ul>
-    <li class="collapse show" id="docsai-servicestable-dataforecast">
+    <li class="collapse " id="docsai-servicestable-dataforecast">
       
       
       
@@ -446,10 +446,10 @@
 
 <ul class="td-sidebar-nav__section pr-md-3">
   <li class="td-sidebar-nav__section-title">
-    <a  href="https://aws-samples.github.io/amazon-sagemaker-examples-jp/docs/ai-services/table-data/personalize/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">Amazon Personalize</a>
+    <a  href="https://aws-samples.github.io/amazon-sagemaker-examples-jp/docs/ai-services/table-data/personalize/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section">Amazon Personalize</a>
   </li>
   <ul>
-    <li class="collapse show" id="docsai-servicestable-datapersonalize">
+    <li class="collapse " id="docsai-servicestable-datapersonalize">
       
       
       
@@ -471,10 +471,10 @@
 
 <ul class="td-sidebar-nav__section pr-md-3">
   <li class="td-sidebar-nav__section-title">
-    <a  href="https://aws-samples.github.io/amazon-sagemaker-examples-jp/docs/ai-services/table-data/fraud/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">Amazon Fraud Detector</a>
+    <a  href="https://aws-samples.github.io/amazon-sagemaker-examples-jp/docs/ai-services/table-data/fraud/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section">Amazon Fraud Detector</a>
   </li>
   <ul>
-    <li class="collapse show" id="docsai-servicestable-datafraud">
+    <li class="collapse " id="docsai-servicestable-datafraud">
       
       
       
@@ -653,6 +653,9 @@
 
 
 
+
+
+
 <li class="breadcrumb-item" >
 	<a href="https://aws-samples.github.io/amazon-sagemaker-examples-jp/docs/">Documentation</a>
 </li>
@@ -667,8 +670,15 @@
 
 
 
+<li class="breadcrumb-item" >
+	<a href="https://aws-samples.github.io/amazon-sagemaker-examples-jp/docs/ai-services/text/">テキストを使う</a>
+</li>
+
+
+
+
 <li class="breadcrumb-item active" aria-current="page">
-	<a href="https://aws-samples.github.io/amazon-sagemaker-examples-jp/docs/ai-services/table-data/">テーブルデータを使う</a>
+	<a href="https://aws-samples.github.io/amazon-sagemaker-examples-jp/docs/ai-services/text/comprehend/">Amazon Comprehend</a>
 </li>
 
 	</ol>
@@ -676,10 +686,30 @@
 
             
 <div class="td-content">
-	<h1>テーブルデータを使う</h1>
-        <div class="lead">テーブルデータを使って予測・分類を行う AI サービスをご紹介します。</div>
+	<h1>Amazon Comprehend</h1>
+        <div class="lead">テキストの内容を分析するための AI サービスです。</div>
 	
-	
+	<p>自然言語処理を使用して、文章などのテキストを分析します。例えば、コールセンターなどの会話記録テキストを分析し、顧客の感情がどのように変わったかを分析してオペレータの対応改善に活用するなどに使うことができます。医療文書の分析をするための Amazon Comprehend Medical もあります。</p>
+<h3 id="参考情報">参考情報</h3>
+<p><a href="https://resources.awscloud.com/aws-summit-online-japan-2020-on-demand-self-paced-hands-on-85234/hol-20-aws-summit-online-2020-ai-polly-720p"
+  
+  
+    target="_blank" rel="noopener"
+  
+>
+  HOL-20：自然言語解析を体験 ~Amazon Translate, Amazon Polly, Amazon Transcribe, Amazon Comprehend ~
+</a><br>
+4 つの AI サービスを使って自然言語解析を体験するハンズオンです。</p>
+<p><a href="https://aws.amazon.com/jp/blogs/news/performing-medical-transcription-analysis-with-amazon-transcribe-medical-and-amazon-comprehend-medical/"
+  
+  
+    target="_blank" rel="noopener"
+  
+>
+  Amazon Transcribe Medical および Amazon Comprehend Medical を使用した、医療現場でのトランスクリプションおよび分析の実行（AWS ブログ）
+</a><br>
+Amazon Transcribe Medical で音声からテキストに変換したデータを Amazon Comprehend Medical を使って分析する方法を説明した記事です。</p>
+
         <div class="section-index">
     
     
@@ -691,13 +721,6 @@
             
         
             
-                <div class="entry">
-                    <h5>
-                        <a href="https://aws-samples.github.io/amazon-sagemaker-examples-jp/docs/ai-services/table-data/forecast/">Amazon Forecast</a>
-                    </h5>
-                    <p>時系列データ予測を行うための AI サービスです。</p>
-                </div>
-            
         
             
         
@@ -714,13 +737,6 @@
             
         
             
-                <div class="entry">
-                    <h5>
-                        <a href="https://aws-samples.github.io/amazon-sagemaker-examples-jp/docs/ai-services/table-data/personalize/">Amazon Personalize</a>
-                    </h5>
-                    <p>レコメンデーションを行うための AI サービスです。</p>
-                </div>
-            
         
             
         
@@ -734,13 +750,6 @@
         
             
         
-            
-                <div class="entry">
-                    <h5>
-                        <a href="https://aws-samples.github.io/amazon-sagemaker-examples-jp/docs/ai-services/table-data/fraud/">Amazon Fraud Detector</a>
-                    </h5>
-                    <p>オンラインの不正行為を検知するための AI サービスです。</p>
-                </div>
             
         
             
@@ -820,7 +829,7 @@
 		<br />
 	
 	
-	<div class="text-muted mt-5 pt-3 border-top">Last modified March 8, 2021: <a  href="https://github.com/aws-samples/amazon-sagemaker-examples-jp/commit/05cd483980e0773b86cdce7c4d91a8534b462c3b">fix repo url (05cd483)</a>
+	<div class="text-muted mt-5 pt-3 border-top">Last modified January 5, 2021
 </div>
 </div>
 
