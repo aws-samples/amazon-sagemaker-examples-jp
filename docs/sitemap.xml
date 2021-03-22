@@ -3,23 +3,113 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://aws-samples.github.io/amazon-sagemaker-examples-jp/docs/examples/</loc>
-    <lastmod>2021-02-06T20:24:17+09:00</lastmod>
+    <loc>https://aws-samples.github.io/amazon-sagemaker-examples-jp/docs/ai-services/text/comprehend/</loc>
+    <lastmod>2021-03-09T14:31:16+09:00</lastmod>
   </url>
   
   <url>
-    <loc>https://aws-samples.github.io/amazon-sagemaker-examples-jp/docs/%E3%81%8A%E5%AE%A2%E6%A7%98%E4%BA%8B%E4%BE%8B%E9%9B%86/</loc>
-    <lastmod>2021-02-06T20:24:17+09:00</lastmod>
+    <loc>https://aws-samples.github.io/amazon-sagemaker-examples-jp/docs/ai-services/table-data/forecast/</loc>
+    <lastmod>2021-03-09T14:31:16+09:00</lastmod>
   </url>
   
   <url>
-    <loc>https://aws-samples.github.io/amazon-sagemaker-examples-jp/docs/%E5%8F%82%E8%80%83%E3%81%AB%E3%81%AA%E3%82%8A%E3%81%9D%E3%81%86%E3%81%AA%E5%A4%96%E9%83%A8%E8%A8%98%E4%BA%8B/</loc>
-    <lastmod>2021-02-06T20:24:17+09:00</lastmod>
+    <loc>https://aws-samples.github.io/amazon-sagemaker-examples-jp/docs/ai-services/images/rekognition/</loc>
+    <lastmod>2021-03-08T17:41:31+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://aws-samples.github.io/amazon-sagemaker-examples-jp/docs/ai-services/voice/transcribe/</loc>
+    <lastmod>2021-03-09T14:31:16+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://aws-samples.github.io/amazon-sagemaker-examples-jp/docs/ai-services/images/</loc>
+    <lastmod>2021-03-08T11:24:33+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://aws-samples.github.io/amazon-sagemaker-examples-jp/docs/usecases/table-data/</loc>
+    <lastmod>2021-03-04T13:20:16+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://aws-samples.github.io/amazon-sagemaker-examples-jp/docs/ml-services/sagemaker-tutorial/</loc>
+    <lastmod>2021-03-04T13:20:16+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://aws-samples.github.io/amazon-sagemaker-examples-jp/docs/usecases/</loc>
+    <lastmod>2021-03-04T13:20:16+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://aws-samples.github.io/amazon-sagemaker-examples-jp/docs/ai-services/</loc>
+    <lastmod>2021-03-09T14:31:16+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://aws-samples.github.io/amazon-sagemaker-examples-jp/docs/ai-services/table-data/personalize/</loc>
+    <lastmod>2021-03-09T14:31:16+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://aws-samples.github.io/amazon-sagemaker-examples-jp/docs/ai-services/images/textract/</loc>
+    <lastmod>2021-03-08T19:18:54+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://aws-samples.github.io/amazon-sagemaker-examples-jp/docs/ai-services/text/translate/</loc>
+    <lastmod>2021-03-09T14:31:16+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://aws-samples.github.io/amazon-sagemaker-examples-jp/docs/ai-services/text/</loc>
+    <lastmod>2021-03-08T19:18:54+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://aws-samples.github.io/amazon-sagemaker-examples-jp/docs/usecases/image/</loc>
+    <lastmod>2021-03-04T13:20:16+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://aws-samples.github.io/amazon-sagemaker-examples-jp/docs/usecases/nlp/</loc>
+    <lastmod>2021-03-04T13:20:16+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://aws-samples.github.io/amazon-sagemaker-examples-jp/docs/ml-services/sagemaker-dive-deep/</loc>
+    <lastmod>2021-03-04T13:20:16+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://aws-samples.github.io/amazon-sagemaker-examples-jp/docs/ai-services/table-data/fraud/</loc>
+    <lastmod>2021-03-09T14:31:16+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://aws-samples.github.io/amazon-sagemaker-examples-jp/docs/ai-services/text/polly/</loc>
+    <lastmod>2021-03-09T14:31:16+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://aws-samples.github.io/amazon-sagemaker-examples-jp/docs/ai-services/table-data/</loc>
+    <lastmod>2021-03-08T19:18:54+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://aws-samples.github.io/amazon-sagemaker-examples-jp/docs/ml-services/</loc>
+    <lastmod>2021-03-04T13:20:16+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://aws-samples.github.io/amazon-sagemaker-examples-jp/docs/ai-services/voice/</loc>
+    <lastmod>2021-03-08T19:18:54+09:00</lastmod>
   </url>
   
   <url>
     <loc>https://aws-samples.github.io/amazon-sagemaker-examples-jp/docs/</loc>
-    <lastmod>2021-02-06T20:24:17+09:00</lastmod>
+    <lastmod>2021-03-04T13:20:16+09:00</lastmod>
   </url>
   
   <url>
@@ -43,17 +133,7 @@
   </url>
   
   <url>
-    <loc>https://aws-samples.github.io/amazon-sagemaker-examples-jp/docs/%E3%81%8A%E5%AE%A2%E6%A7%98%E4%BA%8B%E4%BE%8B%E9%9B%86/pubref1/</loc>
-    <lastmod>2021-02-06T20:24:17+09:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://aws-samples.github.io/amazon-sagemaker-examples-jp/blog/2018/01/04/another-great-release/</loc>
-    <lastmod>2021-02-06T20:24:17+09:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://aws-samples.github.io/amazon-sagemaker-examples-jp/docs/%E5%8F%82%E8%80%83%E3%81%AB%E3%81%AA%E3%82%8A%E3%81%9D%E3%81%86%E3%81%AA%E5%A4%96%E9%83%A8%E8%A8%98%E4%BA%8B/parameter-reference/</loc>
     <lastmod>2021-02-06T20:24:17+09:00</lastmod>
   </url>
   
@@ -64,17 +144,17 @@
   
   <url>
     <loc>https://aws-samples.github.io/amazon-sagemaker-examples-jp/</loc>
-    <lastmod>2021-02-06T20:24:17+09:00</lastmod>
+    <lastmod>2021-03-08T11:24:33+09:00</lastmod>
   </url>
   
   <url>
     <loc>https://aws-samples.github.io/amazon-sagemaker-examples-jp/blog/</loc>
-    <lastmod>2021-02-06T20:24:17+09:00</lastmod>
+    <lastmod>2021-03-04T13:20:16+09:00</lastmod>
   </url>
   
   <url>
-    <loc>https://aws-samples.github.io/amazon-sagemaker-examples-jp/community/</loc>
-    <lastmod>2021-02-06T20:24:17+09:00</lastmod>
+    <loc>https://aws-samples.github.io/amazon-sagemaker-examples-jp/examples/</loc>
+    <lastmod>2021-03-04T13:20:16+09:00</lastmod>
   </url>
   
   <url>

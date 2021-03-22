@@ -1,0 +1,1120 @@
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="generator" content="Hugo 0.80.0" /><link rel="alternate" type="text/html" href="https://aws-samples.github.io/amazon-sagemaker-examples-jp/docs/ai-services/images/rekognition/_print/">
+<META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
+
+
+<link rel="shortcut icon" href="https://aws-samples.github.io/amazon-sagemaker-examples-jp/favicons/favicon.ico" >
+<link rel="apple-touch-icon" href="https://aws-samples.github.io/amazon-sagemaker-examples-jp/favicons/apple-touch-icon-180x180.png" sizes="180x180">
+<link rel="icon" type="image/png" href="https://aws-samples.github.io/amazon-sagemaker-examples-jp/favicons/favicon-16x16.png" sizes="16x16">
+<link rel="icon" type="image/png" href="https://aws-samples.github.io/amazon-sagemaker-examples-jp/favicons/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="https://aws-samples.github.io/amazon-sagemaker-examples-jp/favicons/android-36x36.png" sizes="36x36">
+<link rel="icon" type="image/png" href="https://aws-samples.github.io/amazon-sagemaker-examples-jp/favicons/android-48x48.png" sizes="48x48">
+<link rel="icon" type="image/png" href="https://aws-samples.github.io/amazon-sagemaker-examples-jp/favicons/android-72x72.png" sizes="72x72">
+<link rel="icon" type="image/png" href="https://aws-samples.github.io/amazon-sagemaker-examples-jp/favicons/android-96x96.png" sizes="96x96">
+<link rel="icon" type="image/png" href="https://aws-samples.github.io/amazon-sagemaker-examples-jp/favicons/android-144x144.png" sizes="144x144">
+<link rel="icon" type="image/png" href="https://aws-samples.github.io/amazon-sagemaker-examples-jp/favicons/android-192x192.png" sizes="192x192">
+
+<title>Amazon Rekognition | ML portal</title><meta property="og:title" content="Amazon Rekognition" />
+<meta property="og:description" content="画像や動画の分析を行うための AI サービスです。
+" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://aws-samples.github.io/amazon-sagemaker-examples-jp/docs/ai-services/images/rekognition/" />
+<meta property="og:updated_time" content="2021-03-08T17:41:31+09:00" />
+<meta itemprop="name" content="Amazon Rekognition">
+<meta itemprop="description" content="画像や動画の分析を行うための AI サービスです。
+">
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Amazon Rekognition"/>
+<meta name="twitter:description" content="画像や動画の分析を行うための AI サービスです。
+"/>
+
+
+
+
+
+<link rel="preload" href="https://aws-samples.github.io/amazon-sagemaker-examples-jp/scss/main.min.b31ffd97dd6798655a172c11b526e2c16608629dbeabd6fe8bf1f609994e0818.css" as="style">
+<link href="https://aws-samples.github.io/amazon-sagemaker-examples-jp/scss/main.min.b31ffd97dd6798655a172c11b526e2c16608629dbeabd6fe8bf1f609994e0818.css" rel="stylesheet" integrity="">
+
+
+<script
+  src="https://code.jquery.com/jquery-3.5.1.min.js"
+  integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
+  crossorigin="anonymous"></script>
+
+
+
+
+  </head>
+  <body class="td-section">
+    <header>
+      
+<nav class="js-navbar-scroll navbar navbar-expand navbar-dark flex-column flex-md-row td-navbar">
+        <a class="navbar-brand" href="https://aws-samples.github.io/amazon-sagemaker-examples-jp/">
+		<span class="navbar-logo"><svg width="30" height="30" viewBox="0 0 453 453" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><title>Group 3</title><desc>Created with Sketch.</desc><defs><path d="M98.5346185 78.885366C117.316875 72.6943974 137.907366 69.2779922 159.5 69.2779922S201.683125 72.6943974 220.465382 78.885366L269.102061 8.61906888C275.388575-.463172918 287.847413-2.72955786 296.929655 3.55695642 301.867043 6.97449999 305.007625 12.4296154 305.483904 18.4154786L318.465843 181.572298C318.567107 182.844984 318.546905 184.099306 318.41496 185.32386 318.80233 188.934245 319 192.587738 319 196.277992 319 266.418155 247.589418 323.277992 159.5 323.277992 71.4105824 323.277992.0 266.418155.0 196.277992.0 192.587738.197670371 188.934245.585040205 185.32386.453095453 184.099306.432893346 182.844984.534157463 181.572298L13.5160962 18.4154786C13.9923749 12.4296154 17.1329573 6.97449999 22.0703448 3.55695642 31.1525866-2.72955786 43.611425-.463172918 49.8979393 8.61906888L98.5346185 78.885366z" id="path-1"/></defs><g id="sagemaker" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><g id="Group"><g id="Group-3"><rect id="Rectangle" stroke="#979797" fill="#d8d8d8" x=".5" y=".5" width="452" height="452"/><g id="sg_logo-copy" transform="translate(66.000000, 72.722008)"><mask id="mask-2" fill="#fff"><use xlink:href="#path-1"/></mask><g id="Mask"/><g mask="url(#mask-2)"><g transform="translate(9.000000, 24.277992)"><polygon id="Path" stroke="#247e70" stroke-width="12" fill="none" stroke-linecap="round" stroke-linejoin="round" points="38.3790511 44.2609176 107.571211 2.61899877e-14 153.397596 29.313972 199.860719 8.46545056e-15 268.890573 44.2609176 268.890573 88.5280708 308 119.095416 308 186.590509 268.890573 217.56941 268.890573 260.527069 191.870285 305 154.995683 284.160329 115.561645 305 38.3790511 262.123405 38.3790511 217.56941 0 186.590509 0 119.095416 38.3790511 90.1244071"/><polyline id="Path-2" stroke="#247e70" stroke-width="12" fill="none" stroke-linecap="round" points="153 29 153 111.919901 194 136"/><path d="M203 66h66" id="Path-3" stroke="#247e70" stroke-width="12" fill="none" stroke-linecap="round"/><path d="M253 166l44 27" id="Path-4" stroke="#247e70" stroke-width="12" fill="none" stroke-linecap="round"/><polyline id="Path-5" stroke="#247e70" stroke-width="12" fill="none" stroke-linecap="round" points="131 146 154.01668 160.434972 155 284"/><path d="M78 245l76-44" id="Path-6" stroke="#247e70" stroke-width="12" fill="none" stroke-linecap="round"/><polyline id="Path-7" stroke="#247e70" stroke-width="12" fill="none" stroke-linecap="round" points="44 180.12816 78.2344246 159 113 176.928648 113 224"/><polyline id="Path-8" stroke="#247e70" stroke-width="12" fill="none" stroke-linecap="round" points="116 52 116 94.0457283 78.207455 115 39 88.436655"/><path d="M78 115v46" id="Path-9" stroke="#247e70" stroke-width="12" fill="none" stroke-linecap="round"/><path d="M40 136 0 160" id="Path-10" stroke="#247e70" stroke-width="12" fill="none" stroke-linecap="round"/><path d="M204 231H155" id="Path-11" stroke="#247e70" stroke-width="12" fill="none" stroke-linecap="round"/><path d="M117 260 80 282" id="Path-12" stroke="#247e70" stroke-width="12" fill="none" stroke-linecap="round"/><path d="M78 201 41 223" id="Path-13" stroke="#247e70" stroke-width="12" fill="none" stroke-linecap="round"/><path d="M77 73V20" id="Path-14" stroke="#247e70" stroke-width="12" fill="none" stroke-linecap="round"/><circle id="Oval" stroke="none" fill="#247e70" fill-rule="evenodd" cx="201" cy="66" r="15"/><circle id="Oval-Copy" stroke="none" fill="#247e70" fill-rule="evenodd" cx="194" cy="137" r="15"/><circle id="Oval-Copy-2" stroke="none" fill="#247e70" fill-rule="evenodd" cx="253" cy="166" r="15"/><circle id="Oval-Copy-3" stroke="none" fill="#247e70" fill-rule="evenodd" cx="201" cy="232" r="15"/></g></g></g><path d="M167.534618 151.885366C186.316875 145.694397 206.907366 142.277992 228.5 142.277992S270.683125 145.694397 289.465382 151.885366L338.102061 81.6190689C344.388575 72.5368271 356.847413 70.2704421 365.929655 76.5569564 370.867043 79.9745 374.007625 85.4296154 374.483904 91.4154786L387.465843 254.572298C387.567107 255.844984 387.546905 257.099306 387.41496 258.32386 387.80233 261.934245 388 265.587738 388 269.277992c0 70.14016300000003-71.41058199999998 127-159.5 127-88.089418.0-159.5-56.85983699999997-159.5-127C69 265.587738 69.1976704 261.934245 69.5850402 258.32386 69.4530955 257.099306 69.4328933 255.844984 69.5341575 254.572298L82.5160962 91.4154786C82.9923749 85.4296154 86.1329573 79.9745 91.0703448 76.5569564 100.152587 70.2704421 112.611425 72.5368271 118.897939 81.6190689l48.636679 70.2662971z" id="Path" stroke="#353535" stroke-width="21"/></g></g></g></svg></span><span class="text-uppercase font-weight-bold">ML portal</span>
+	</a>
+	<div class="td-navbar-nav-scroll ml-md-auto" id="main_navbar">
+		<ul class="navbar-nav mt-2 mt-lg-0">
+			
+			
+			<li class="nav-item mr-4 mb-2 mb-lg-0">
+				
+				
+				
+				
+				
+				
+				<a  class="nav-link" href="https://aws-samples.github.io/amazon-sagemaker-examples-jp/about/" ><span>About</span></a>
+			</li>
+			
+			<li class="nav-item mr-4 mb-2 mb-lg-0">
+				
+				
+				
+				
+				
+				
+				<a  class="nav-link active" href="https://aws-samples.github.io/amazon-sagemaker-examples-jp/docs/" ><span class="active">Documentation</span></a>
+			</li>
+			
+			<li class="nav-item mr-4 mb-2 mb-lg-0">
+				
+				
+				
+				
+				
+				
+				<a  class="nav-link" href="https://aws-samples.github.io/amazon-sagemaker-examples-jp/examples/" ><span>Examples</span></a>
+			</li>
+			
+			<li class="nav-item mr-4 mb-2 mb-lg-0">
+				
+				
+				
+				
+				
+				
+				<a  class="nav-link" href="https://aws-samples.github.io/amazon-sagemaker-examples-jp/blog/" ><span>Blog</span></a>
+			</li>
+			
+			
+			
+		</ul>
+	</div>
+	<div class="navbar-nav d-none d-lg-block">
+<input type="search" class="form-control td-search-input" placeholder="&#xf002 Search this site…" aria-label="Search this site…" autocomplete="off">
+
+</div>
+</nav>
+
+    </header>
+    <div class="container-fluid td-outer">
+      <div class="td-main">
+        <div class="row flex-xl-nowrap">
+          <div class="col-12 col-md-3 col-xl-2 td-sidebar d-print-none">
+            
+
+
+
+
+<div id="td-sidebar-menu" class="td-sidebar__inner">
+  
+  <form class="td-sidebar__search d-flex align-items-center">
+    
+<input type="search" class="form-control td-search-input" placeholder="&#xf002 Search this site…" aria-label="Search this site…" autocomplete="off">
+
+
+    <button class="btn btn-link td-sidebar__toggle d-md-none p-0 ml-3 fas fa-bars" type="button" data-toggle="collapse" data-target="#td-section-nav" aria-controls="td-docs-nav" aria-expanded="false" aria-label="Toggle section navigation">
+    </button>
+  </form>
+  
+  <nav class="collapse td-sidebar-nav" id="td-section-nav">
+    
+    
+    
+
+
+
+
+
+
+<ul class="td-sidebar-nav__section pr-md-3">
+  <li class="td-sidebar-nav__section-title">
+    <a  href="https://aws-samples.github.io/amazon-sagemaker-examples-jp/docs/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">Documentation</a>
+  </li>
+  <ul>
+    <li class="collapse show" id="docs">
+      
+      
+      
+      
+        
+          
+
+
+
+
+
+
+<ul class="td-sidebar-nav__section pr-md-3">
+  <li class="td-sidebar-nav__section-title">
+    <a  href="https://aws-samples.github.io/amazon-sagemaker-examples-jp/docs/usecases/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section">ユースケースに応じた開発方法</a>
+  </li>
+  <ul>
+    <li class="collapse " id="docsusecases">
+      
+      
+      
+      
+        
+          
+          
+          <a class="td-sidebar-link td-sidebar-link__page " id="m-docsusecasestable-data" href="https://aws-samples.github.io/amazon-sagemaker-examples-jp/docs/usecases/table-data/">テーブルデータを使う</a>
+        
+      
+      
+      
+        
+          
+          
+          <a class="td-sidebar-link td-sidebar-link__page " id="m-docsusecasesimage" href="https://aws-samples.github.io/amazon-sagemaker-examples-jp/docs/usecases/image/">画像を使う</a>
+        
+      
+      
+      
+        
+          
+          
+          <a class="td-sidebar-link td-sidebar-link__page " id="m-docsusecasesnlp" href="https://aws-samples.github.io/amazon-sagemaker-examples-jp/docs/usecases/nlp/">自然言語を使う</a>
+        
+      
+      
+    </li>
+  </ul>
+</ul>
+
+        
+      
+      
+      
+        
+          
+
+
+
+
+
+
+<ul class="td-sidebar-nav__section pr-md-3">
+  <li class="td-sidebar-nav__section-title">
+    <a  href="https://aws-samples.github.io/amazon-sagemaker-examples-jp/docs/ai-services/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">AI サービスを活用する</a>
+  </li>
+  <ul>
+    <li class="collapse show" id="docsai-services">
+      
+      
+      
+      
+        
+          
+
+
+
+
+
+
+<ul class="td-sidebar-nav__section pr-md-3">
+  <li class="td-sidebar-nav__section-title">
+    <a  href="https://aws-samples.github.io/amazon-sagemaker-examples-jp/docs/ai-services/images/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">画像を使う</a>
+  </li>
+  <ul>
+    <li class="collapse show" id="docsai-servicesimages">
+      
+      
+      
+      
+        
+          
+
+
+
+
+
+
+<ul class="td-sidebar-nav__section pr-md-3">
+  <li class="td-sidebar-nav__section-title">
+    <a  href="https://aws-samples.github.io/amazon-sagemaker-examples-jp/docs/ai-services/images/rekognition/" class="align-left pl-0 pr-2 active td-sidebar-link td-sidebar-link__section">Amazon Rekognition</a>
+  </li>
+  <ul>
+    <li class="collapse show" id="docsai-servicesimagesrekognition">
+      
+      
+      
+    </li>
+  </ul>
+</ul>
+
+        
+      
+      
+      
+        
+          
+
+
+
+
+
+
+<ul class="td-sidebar-nav__section pr-md-3">
+  <li class="td-sidebar-nav__section-title">
+    <a  href="https://aws-samples.github.io/amazon-sagemaker-examples-jp/docs/ai-services/images/textract/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section">Amazon Textract</a>
+  </li>
+  <ul>
+    <li class="collapse " id="docsai-servicesimagestextract">
+      
+      
+      
+    </li>
+  </ul>
+</ul>
+
+        
+      
+      
+    </li>
+  </ul>
+</ul>
+
+        
+      
+      
+      
+        
+          
+
+
+
+
+
+
+<ul class="td-sidebar-nav__section pr-md-3">
+  <li class="td-sidebar-nav__section-title">
+    <a  href="https://aws-samples.github.io/amazon-sagemaker-examples-jp/docs/ai-services/text/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section">テキストを使う</a>
+  </li>
+  <ul>
+    <li class="collapse " id="docsai-servicestext">
+      
+      
+      
+      
+        
+          
+
+
+
+
+
+
+<ul class="td-sidebar-nav__section pr-md-3">
+  <li class="td-sidebar-nav__section-title">
+    <a  href="https://aws-samples.github.io/amazon-sagemaker-examples-jp/docs/ai-services/text/comprehend/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section">Amazon Comprehend</a>
+  </li>
+  <ul>
+    <li class="collapse " id="docsai-servicestextcomprehend">
+      
+      
+      
+    </li>
+  </ul>
+</ul>
+
+        
+      
+      
+      
+        
+          
+
+
+
+
+
+
+<ul class="td-sidebar-nav__section pr-md-3">
+  <li class="td-sidebar-nav__section-title">
+    <a  href="https://aws-samples.github.io/amazon-sagemaker-examples-jp/docs/ai-services/text/translate/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section">Amazon Translate</a>
+  </li>
+  <ul>
+    <li class="collapse " id="docsai-servicestexttranslate">
+      
+      
+      
+    </li>
+  </ul>
+</ul>
+
+        
+      
+      
+      
+        
+          
+
+
+
+
+
+
+<ul class="td-sidebar-nav__section pr-md-3">
+  <li class="td-sidebar-nav__section-title">
+    <a  href="https://aws-samples.github.io/amazon-sagemaker-examples-jp/docs/ai-services/text/polly/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section">Amazon Polly</a>
+  </li>
+  <ul>
+    <li class="collapse " id="docsai-servicestextpolly">
+      
+      
+      
+    </li>
+  </ul>
+</ul>
+
+        
+      
+      
+    </li>
+  </ul>
+</ul>
+
+        
+      
+      
+      
+        
+          
+
+
+
+
+
+
+<ul class="td-sidebar-nav__section pr-md-3">
+  <li class="td-sidebar-nav__section-title">
+    <a  href="https://aws-samples.github.io/amazon-sagemaker-examples-jp/docs/ai-services/table-data/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section">テーブルデータを使う</a>
+  </li>
+  <ul>
+    <li class="collapse " id="docsai-servicestable-data">
+      
+      
+      
+      
+        
+          
+
+
+
+
+
+
+<ul class="td-sidebar-nav__section pr-md-3">
+  <li class="td-sidebar-nav__section-title">
+    <a  href="https://aws-samples.github.io/amazon-sagemaker-examples-jp/docs/ai-services/table-data/forecast/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section">Amazon Forecast</a>
+  </li>
+  <ul>
+    <li class="collapse " id="docsai-servicestable-dataforecast">
+      
+      
+      
+    </li>
+  </ul>
+</ul>
+
+        
+      
+      
+      
+        
+          
+
+
+
+
+
+
+<ul class="td-sidebar-nav__section pr-md-3">
+  <li class="td-sidebar-nav__section-title">
+    <a  href="https://aws-samples.github.io/amazon-sagemaker-examples-jp/docs/ai-services/table-data/personalize/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section">Amazon Personalize</a>
+  </li>
+  <ul>
+    <li class="collapse " id="docsai-servicestable-datapersonalize">
+      
+      
+      
+    </li>
+  </ul>
+</ul>
+
+        
+      
+      
+      
+        
+          
+
+
+
+
+
+
+<ul class="td-sidebar-nav__section pr-md-3">
+  <li class="td-sidebar-nav__section-title">
+    <a  href="https://aws-samples.github.io/amazon-sagemaker-examples-jp/docs/ai-services/table-data/fraud/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section">Amazon Fraud Detector</a>
+  </li>
+  <ul>
+    <li class="collapse " id="docsai-servicestable-datafraud">
+      
+      
+      
+    </li>
+  </ul>
+</ul>
+
+        
+      
+      
+    </li>
+  </ul>
+</ul>
+
+        
+      
+      
+      
+        
+          
+
+
+
+
+
+
+<ul class="td-sidebar-nav__section pr-md-3">
+  <li class="td-sidebar-nav__section-title">
+    <a  href="https://aws-samples.github.io/amazon-sagemaker-examples-jp/docs/ai-services/voice/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section">音声を使う</a>
+  </li>
+  <ul>
+    <li class="collapse " id="docsai-servicesvoice">
+      
+      
+      
+      
+        
+          
+
+
+
+
+
+
+<ul class="td-sidebar-nav__section pr-md-3">
+  <li class="td-sidebar-nav__section-title">
+    <a  href="https://aws-samples.github.io/amazon-sagemaker-examples-jp/docs/ai-services/voice/transcribe/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section">Amazon Transcribe</a>
+  </li>
+  <ul>
+    <li class="collapse " id="docsai-servicesvoicetranscribe">
+      
+      
+      
+    </li>
+  </ul>
+</ul>
+
+        
+      
+      
+    </li>
+  </ul>
+</ul>
+
+        
+      
+      
+    </li>
+  </ul>
+</ul>
+
+        
+      
+      
+      
+        
+          
+
+
+
+
+
+
+<ul class="td-sidebar-nav__section pr-md-3">
+  <li class="td-sidebar-nav__section-title">
+    <a  href="https://aws-samples.github.io/amazon-sagemaker-examples-jp/docs/ml-services/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section">自分で機械学習モデルを作る</a>
+  </li>
+  <ul>
+    <li class="collapse " id="docsml-services">
+      
+      
+      
+      
+        
+          
+
+
+
+
+
+
+<ul class="td-sidebar-nav__section pr-md-3">
+  <li class="td-sidebar-nav__section-title">
+    <a  href="https://aws-samples.github.io/amazon-sagemaker-examples-jp/docs/ml-services/sagemaker-tutorial/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section">Amazon SageMaker 入門</a>
+  </li>
+  <ul>
+    <li class="collapse " id="docsml-servicessagemaker-tutorial">
+      
+      
+      
+    </li>
+  </ul>
+</ul>
+
+        
+      
+      
+      
+        
+          
+
+
+
+
+
+
+<ul class="td-sidebar-nav__section pr-md-3">
+  <li class="td-sidebar-nav__section-title">
+    <a  href="https://aws-samples.github.io/amazon-sagemaker-examples-jp/docs/ml-services/sagemaker-dive-deep/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section">Amazon SageMaker を深く理解する</a>
+  </li>
+  <ul>
+    <li class="collapse " id="docsml-servicessagemaker-dive-deep">
+      
+      
+      
+    </li>
+  </ul>
+</ul>
+
+        
+      
+      
+    </li>
+  </ul>
+</ul>
+
+        
+      
+      
+    </li>
+  </ul>
+</ul>
+
+  </nav>
+</div>
+
+
+
+
+          </div>
+
+          <main class="col-12 col-md-9 col-xl-8 pl-md-5" role="main">
+            
+  
+
+            <nav aria-label="breadcrumb" class="d-none d-md-block d-print-none">
+	<ol class="breadcrumb spb-1">
+		
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="breadcrumb-item" >
+	<a href="https://aws-samples.github.io/amazon-sagemaker-examples-jp/docs/">Documentation</a>
+</li>
+
+
+
+
+<li class="breadcrumb-item" >
+	<a href="https://aws-samples.github.io/amazon-sagemaker-examples-jp/docs/ai-services/">AI サービスを活用する</a>
+</li>
+
+
+
+
+<li class="breadcrumb-item" >
+	<a href="https://aws-samples.github.io/amazon-sagemaker-examples-jp/docs/ai-services/images/">画像を使う</a>
+</li>
+
+
+
+
+<li class="breadcrumb-item active" aria-current="page">
+	<a href="https://aws-samples.github.io/amazon-sagemaker-examples-jp/docs/ai-services/images/rekognition/">Amazon Rekognition</a>
+</li>
+
+	</ol>
+</nav	>
+
+            
+<div class="td-content">
+	<h1>Amazon Rekognition</h1>
+        <div class="lead">画像や動画の分析を行うための AI サービスです。</div>
+	
+	<h2 id="一般的なシーン認識物体検知を行う">一般的なシーン認識・物体検知を行う</h2>
+<p>画像のどこに人、車、猫などの一般的な被写体が写っているかを分析したり、写真に何が写っているのかを分析したりできます。AWS コンソールからサンプル画像やアップロードした画像を使って簡単に機能を試すことができます。</p>
+<p><img src="rek-obj.png" alt="Rekognition"></p>
+<p><a href="https://ap-northeast-1.console.aws.amazon.com/rekognition/home?region=ap-northeast-1#/label-detection"
+  
+  
+    target="_blank" rel="noopener"
+  
+>
+  AWS コンソールへのリンク（東京リージョン）
+</a></p>
+<h3 id="参考情報">参考情報</h3>
+<p><a href="https://aws.amazon.com/jp/rekognition/getting-started/"
+  
+  
+    target="_blank" rel="noopener"
+  
+>
+  Amazon Rekognition の開始方法
+</a><br>
+Amazon Rekognition の利用を始めるためのドキュメントや、いくつかのユースケースを実現するための動画が公開されています。</p>
+<hr>
+<h2 id="独自のシーン認識物体検知モデルを作る">独自のシーン認識・物体検知モデルを作る</h2>
+<p>Amazon Rekognition Custom Labels（カスタムラベル）という機能を使って、お客様がお持ちの画像を使って、独自のシーン認識（画像分類）や物体検知モデルをノーコードで作成いただけます。</p>
+<p>Amazon SageMaker Ground Truth で画像のラベリングを行い、その結果を使って Amazon Rekognition Custom Labels でモデルを作成することができます。</p>
+<h3 id="参考情報-1">参考情報</h3>
+<p><a href="https://aws.amazon.com/jp/builders-flash/202003/sagemaker-groundtruth-cat/"
+  
+  
+    target="_blank" rel="noopener"
+  
+>
+  【Nyantech ハンズオンシリーズ】機械学習を使って写真に写っている猫を見分けてみよう！
+</a><br>
+Amazon SageMaker Ground Truth で画像のラベリングをし、Amazon Rekognition Custom Labels を使って猫のタマとミケを見分ける機械学習モデルを作る方法がハンズオン形式で説明されています。</p>
+<p><a href="https://aws.amazon.com/jp/blogs/news/detecting-playful-animal-behavior-in-videos-using-amazon-rekognition-custom-labels/"
+  
+  
+    target="_blank" rel="noopener"
+  
+>
+  Amazon Rekognition Custom Labelsを利用した動物の特徴的な行動検出
+</a><br>
+猫の動画を題材に、猫パンチをしているかしていないかを見分けるモデルを作っています。</p>
+<p><a href="http://www.youtube.com/watch?v=h02X4ZH1wQI"
+  
+  
+    target="_blank" rel="noopener"
+  
+>
+  <img src="http://img.youtube.com/vi/h02X4ZH1wQI/0.jpg" alt="">
+</a></p>
+<hr>
+<h2 id="顔検出と分析">顔検出と分析</h2>
+<p>画像に写っている顔を検出し、その特徴を分析する機能です。年齢、目の大きさ、眼鏡濃霧、髭の有無などの属性を取得できます。動画では、これらの顔の属性が時間と共にどう変化するかも取得でき、例えば役者が示す感情のタイムラインを作成することができます。</p>
+<p><img src="https://d1.awsstatic.com/product-marketing/Rekognition/Image%20for%20facial%20analysis.3fcc22e8451b4a238540128cb5510b8cbe22da51.jpg" alt="顔検出と分析"></p>
+<h3 id="顔の比較">顔の比較</h3>
+<p>顔の比較の機能を使うことで、2枚の写真に写っている人物がどれくらい似ているかを知ることができます。AWS コンソールからサンプル画像を使ったり、画像をアップロードしたりしてこの機能を簡単に試すことができます。</p>
+<p><img src="compare-face.png" alt="顔検の比較"></p>
+<p><a href="https://ap-northeast-1.console.aws.amazon.com/rekognition/home?region=ap-northeast-1#/face-comparison"
+  
+  
+    target="_blank" rel="noopener"
+  
+>
+  AWS コンソールへのリンク（東京リージョン）
+</a></p>
+<h3 id="参考情報-2">参考情報</h3>
+<p><a href="https://docs.aws.amazon.com/ja_jp/rekognition/latest/dg/faces-detect-images.html#detectfaces-response"
+  
+  
+    target="_blank" rel="noopener"
+  
+>
+  顔検出機能で取得できる情報（開発者ガイド）
+</a><br>
+顔検出機能の API (DetectFaces) を使って取得できる情報について記載されています。</p>
+<p><a href="https://docs.aws.amazon.com/ja_jp/rekognition/latest/dg/faces-comparefaces.html"
+  
+  
+    target="_blank" rel="noopener"
+  
+>
+  画像間の顔の比較（開発者ガイド）
+</a><br>
+顔の比較の機能の使い方が記載されています。</p>
+<hr>
+<h2 id="顔検索と検証">顔検索と検証</h2>
+<p>顔画像の特徴を記録するレポジトリを作成し、写真やビデオ中の人物をリポジトリに登録された人物と照合することができます。</p>
+<p><img src="https://d1.awsstatic.com/product-marketing/Rekognition/Image%20for%20facial%20recognition.d14cf0759b26beed0e9731c93a4680954baf7310.jpg" alt="顔検索と検証"></p>
+<h3 id="参考情報-3">参考情報</h3>
+<p><a href="https://aws.amazon.com/jp/blogs/news/ml-images-usecase-seminar/"
+  
+  
+    target="_blank" rel="noopener"
+  
+>
+  東海理研株式会社様 AWS/Rekognitionを活用した宿泊施設向け入退室管理システム構築事例
+</a><br>
+2020年9月2日に開催された「AWSの機械学習を使った画像データの業務活用セミナー」で登壇いただいたお客様事例の動画と資料を公開しています。</p>
+<p><a href="https://aws.amazon.com/jp/solutions/implementations/auto-check-in-app/"
+  
+  
+    target="_blank" rel="noopener"
+  
+>
+  Auto Check-In App（AWS ソリューションライブラリ）
+</a><br>
+顔の特徴を登録するリポジトリ（顔コレクション）を作成し、イベントのチェックインのための顔認証に必要な製品やサービスを自動的に構築するソリューションを公開しています。イベントチェックイン時に、イベント参加者の写真を撮影すると、このソリューションは Amazon Rekognition に顔画像を送信し、そこで事前登録された参加者の顔コレクションに照らし合わせてそれらの画像を検証します。</p>
+<hr>
+<h2 id="テキスト検出">テキスト検出</h2>
+<p>画像内のテキスト（英数字）を検出できる機能です。</p>
+<p><img src="https://d1.awsstatic.com/product-marketing/Rekognition/text-detection.e676acb975a2bb1bfb2fee0596aeee9fed23c6f3.png" alt="テキスト検出"></p>
+<p>AWS コンソールからサンプル画像やアップロードした画像を使って簡単に機能を試すことができます。</p>
+<p><img src="text.png" alt="テキスト検出"></p>
+<p><a href="https://ap-northeast-1.console.aws.amazon.com/rekognition/home?region=ap-northeast-1#/text-detection"
+  
+  
+    target="_blank" rel="noopener"
+  
+>
+  AWS コンソールへのリンク（東京リージョン）
+</a></p>
+<h3 id="参考情報-4">参考情報</h3>
+<p><a href="https://aws.amazon.com/jp/blogs/news/building-a-smart-garage-door-opener-with-aws-deeplens-and-amazon-rekognition/"
+  
+  
+    target="_blank" rel="noopener"
+  
+>
+  スマートガレージ（AWS ブログ）
+</a><br>
+Amazon Rekognition のテキスト検出機能を使って、特定のナンバープレートの車のみが使用できるガレージを実現する方法を紹介している記事です。</p>
+<hr>
+<h2 id="コンテンツのモデレーション">コンテンツのモデレーション</h2>
+<p>写真に写っているものが暴力的、性的なものでないかなどを判断するための情報を取得できます。お客様は取得した情報をもとに、その写真が不適切なものかどうかを判断することができます。</p>
+<p>自社サイトに意図しない画像がアップロードされることを防ぐために、この機能を使ってアップロード前に画像を検査するなどが考えられます。</p>
+<p><img src="https://d1.awsstatic.com/product-marketing/Rekognition/Unsafe-Content.17ce677c09ac11e463053ad7ea3dcc80bc6372f1.jpg" alt="コンテンツのモデレーション"></p>
+<p>AWS コンソールからサンプル画像やアップロードした画像を使って簡単に機能を試すことができます。</p>
+<p><img src="moderation.png" alt="コンテンツのモデレーション"></p>
+<p><a href="https://ap-northeast-1.console.aws.amazon.com/rekognition/home?region=ap-northeast-1#/image-moderation"
+  
+  
+    target="_blank" rel="noopener"
+  
+>
+  AWS コンソールへのリンク（東京リージョン）
+</a></p>
+<h3 id="参考情報-5">参考情報</h3>
+<p><a href="https://docs.aws.amazon.com/ja_jp/rekognition/latest/dg/moderation.html"
+  
+  
+    target="_blank" rel="noopener"
+  
+>
+  この機能で取得できる情報（開発者ガイド）
+</a><br>
+この機能を使うことによって、どのような情報が得られるかが記載されています。</p>
+<hr>
+<h2 id="有名人の認識">有名人の認識</h2>
+<p>入力された動画や写真をライブラリに照らし合わせ、どの有名人が写っているかを認識します。</p>
+<p><img src="https://d1.awsstatic.com/product-marketing/Rekognition/Image%20for%20celebrity%20recognition_v3.2264009c637a0ee8cf02b75fd82bb30aa34073eb.jpg" alt="有名人の認識"></p>
+<p>AWS コンソールからサンプル画像やアップロードした画像を使って簡単に機能を試すことができます。</p>
+<p><img src="celeb.png" alt="有名人の認識"></p>
+<p><a href="https://ap-northeast-1.console.aws.amazon.com/rekognition/home?region=ap-northeast-1#/celebrity-detection"
+  
+  
+    target="_blank" rel="noopener"
+  
+>
+  AWS コンソールへのリンク（東京リージョン）
+</a></p>
+<h3 id="参考情報-6">参考情報</h3>
+<p><a href="https://docs.aws.amazon.com/ja_jp/rekognition/latest/dg/celebrities-procedure-image.html"
+  
+  
+    target="_blank" rel="noopener"
+  
+>
+  この機能で取得できる情報（開発者ガイド）
+</a><br>
+この機能を使うことによって、どのような情報が得られるかが記載されています。</p>
+<hr>
+<h2 id="personal-protective-equipment-ppe-の検出">Personal Protective Equipment (PPE) の検出</h2>
+<p>写真に映っている人物がフェイスカバー (フェイスマスク)、ハンドカバー (手袋)、ヘッドカバー (ヘルメット) などの PPE を着用しているかどうか、またそれらの保護器具が、該当する身体の部分 (フェイスカバーでは鼻、ヘッドカバーでは頭、ハンドカバーでは手) を覆っているかどうかを自動的に検出します。</p>
+<p><img src="https://d1.awsstatic.com/logos/Screen%20Shot%202020-10-14%20at%206.17.20%20PM.b2bcb1899c20e0cc9ea3c48aee1ad37aca91c12c.png" alt="PPE の検出"></p>
+<p>AWS コンソールからサンプル画像やアップロードした画像を使って簡単に機能を試すことができます。</p>
+<p><img src="ppe.png" alt="有名人の認識"></p>
+<p><a href="https://ap-northeast-1.console.aws.amazon.com/rekognition/home?region=ap-northeast-1#/ppe"
+  
+  
+    target="_blank" rel="noopener"
+  
+>
+  AWS コンソールへのリンク（東京リージョン）
+</a></p>
+<h3 id="参考情報-7">参考情報</h3>
+<p><a href="https://docs.aws.amazon.com/ja_jp/rekognition/latest/dg/ppe-request-response.html"
+  
+  
+    target="_blank" rel="noopener"
+  
+>
+  この機能で取得できる情報（開発者ガイド）
+</a><br>
+この機能を使うことによって、どのような情報が得られるかが記載されています。</p>
+
+        <div class="section-index">
+    
+    
+    
+    
+    
+    <hr class="panel-line">
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+    
+</div>
+
+	
+		<style>
+  .feedback--answer {
+    display: inline-block;
+  }
+  .feedback--answer-no {
+    margin-left: 1em;
+  }
+  .feedback--response {
+    display: none;
+    margin-top: 1em;
+  }
+  .feedback--response__visible {
+    display: block;
+  }
+</style>
+<div class="d-print-none">
+<h2 class="feedback--title">Feedback</h2>
+<p class="feedback--question">Was this page helpful?</p>
+<button class="feedback--answer feedback--answer-yes">Yes</button>
+<button class="feedback--answer feedback--answer-no">No</button>
+<p class="feedback--response feedback--response-yes">
+  Glad to hear it! Please <a href="https://github.com/USERNAME/REPOSITORY/issues/new">tell us how we can improve</a>.
+</p>
+<p class="feedback--response feedback--response-no">
+  Sorry to hear that. Please <a href="https://github.com/USERNAME/REPOSITORY/issues/new">tell us how we can improve</a>.
+</p>
+</div>
+<script>
+  const yesButton = document.querySelector('.feedback--answer-yes');
+  const noButton = document.querySelector('.feedback--answer-no');
+  const yesResponse = document.querySelector('.feedback--response-yes');
+  const noResponse = document.querySelector('.feedback--response-no');
+  const disableButtons = () => {
+    yesButton.disabled = true;
+    noButton.disabled = true;
+  };
+  const sendFeedback = (value) => {
+    if (typeof ga !== 'function') return;
+    const args = {
+      command: 'send',
+      hitType: 'event',
+      category: 'Helpful',
+      action: 'click',
+      label: window.location.pathname,
+      value: value
+    };
+    ga(args.command, args.hitType, args.category, args.action, args.label, args.value);
+  };
+  yesButton.addEventListener('click', () => {
+    yesResponse.classList.add('feedback--response__visible');
+    disableButtons();
+    sendFeedback(1);
+  });
+  noButton.addEventListener('click', () => {
+    noResponse.classList.add('feedback--response__visible');
+    disableButtons();
+    sendFeedback(0);
+  });
+</script>
+
+		<br />
+	
+	
+	<div class="text-muted mt-5 pt-3 border-top">Last modified March 8, 2021: <a  href="https://github.com/aws-samples/amazon-sagemaker-examples-jp/commit/490930a007753dfe90f07acecbbd531b4adcb7eb">update AI service page (490930a)</a>
+</div>
+</div>
+
+          </main>
+        </div>
+      </div>
+      
+<footer class="bg-dark py-5 row d-print-none">
+  <div class="container-fluid mx-sm-5">
+    <div class="row">
+      <div class="col-6 col-sm-4 text-xs-center order-sm-2">
+        
+        
+        
+<ul class="list-inline mb-0">
+  
+  <li class="list-inline-item mx-2 h3" data-toggle="tooltip" data-placement="top" title="User mailing list" aria-label="User mailing list">
+    <a class="text-white" target="_blank" rel="noopener noreferrer" href="https://example.org/mail">
+      <i class="fa fa-envelope"></i>
+    </a>
+  </li>
+  
+  <li class="list-inline-item mx-2 h3" data-toggle="tooltip" data-placement="top" title="Twitter" aria-label="Twitter">
+    <a class="text-white" target="_blank" rel="noopener noreferrer" href="https://example.org/twitter">
+      <i class="fab fa-twitter"></i>
+    </a>
+  </li>
+  
+  <li class="list-inline-item mx-2 h3" data-toggle="tooltip" data-placement="top" title="Stack Overflow" aria-label="Stack Overflow">
+    <a class="text-white" target="_blank" rel="noopener noreferrer" href="https://example.org/stack">
+      <i class="fab fa-stack-overflow"></i>
+    </a>
+  </li>
+  
+</ul>
+
+        
+        
+      </div>
+      <div class="col-6 col-sm-4 text-right text-xs-center order-sm-3">
+        
+        
+        
+<ul class="list-inline mb-0">
+  
+  <li class="list-inline-item mx-2 h3" data-toggle="tooltip" data-placement="top" title="GitHub" aria-label="GitHub">
+    <a class="text-white" target="_blank" rel="noopener noreferrer" href="https://github.com/google/docsy">
+      <i class="fab fa-github"></i>
+    </a>
+  </li>
+  
+  <li class="list-inline-item mx-2 h3" data-toggle="tooltip" data-placement="top" title="Slack" aria-label="Slack">
+    <a class="text-white" target="_blank" rel="noopener noreferrer" href="https://example.org/slack">
+      <i class="fab fa-slack"></i>
+    </a>
+  </li>
+  
+  <li class="list-inline-item mx-2 h3" data-toggle="tooltip" data-placement="top" title="Developer mailing list" aria-label="Developer mailing list">
+    <a class="text-white" target="_blank" rel="noopener noreferrer" href="https://example.org/mail">
+      <i class="fa fa-envelope"></i>
+    </a>
+  </li>
+  
+</ul>
+
+        
+        
+      </div>
+      <div class="col-12 col-sm-4 text-center py-2 order-sm-2">
+        <small class="text-white">&copy; 2021 The Docsy Authors All Rights Reserved</small>
+        <small class="ml-1"><a href="https://policies.google.com/privacy" target="_blank">Privacy Policy</a></small>
+	
+		<p class="mt-2"><a href="https://aws-samples.github.io/amazon-sagemaker-examples-jp/about/">About ML Portal</a></p>
+	
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+    </div>
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+
+
+
+<script src="https://aws-samples.github.io/amazon-sagemaker-examples-jp/js/main.min.2698ba6d60966a95b30f3160f89208b4219c5535421f52ee6147801ad45cc471.js" integrity="sha256-Jpi6bWCWapWzDzFg&#43;JIItCGcVTVCH1LuYUeAGtRcxHE=" crossorigin="anonymous"></script>
+
+
+
+
+  </body>
+</html>
