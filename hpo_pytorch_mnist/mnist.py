@@ -36,26 +36,23 @@ class Net(nn.Module):
         x = self.fc2(x)
         return F.log_softmax(x, dim=1)
 
-
 def _get_train_data_loader(batch_size, training_dir, is_distributed, **kwargs):
     logger.info("Get train data loader")
-    dataset = datasets.MNIST(training_dir, train=True, transform=transforms.Compose([
-        transforms.ToTensor(),
-        transforms.Normalize((0.1307,), (0.3081,))
-    ]))
+    train_tensor = torch.load(os.path.join(training_dir, 'training.pt'))
+    dataset = torch.utils.data.TensorDataset(train_tensor[0], train_tensor[1])
+
     train_sampler = torch.utils.data.distributed.DistributedSampler(dataset) if is_distributed else None
     return torch.utils.data.DataLoader(dataset, batch_size=batch_size, shuffle=train_sampler is None,
                                        sampler=train_sampler, **kwargs)
 
-
 def _get_test_data_loader(test_batch_size, training_dir, **kwargs):
     logger.info("Get test data loader")
+    test_tensor = torch.load(os.path.join(training_dir, 'test.pt'))
+    dataset = torch.utils.data.TensorDataset(test_tensor[0], test_tensor[1])
     return torch.utils.data.DataLoader(
-        datasets.MNIST(training_dir, train=False, transform=transforms.Compose([
-            transforms.ToTensor(),
-            transforms.Normalize((0.1307,), (0.3081,))
-        ])),
-        batch_size=test_batch_size, shuffle=True, **kwargs)
+        dataset,
+        batch_size=test_batch_size,
+        shuffle=True, **kwargs)
 
 
 def _average_gradients(model):
