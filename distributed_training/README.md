@@ -2,5 +2,3 @@
 
 ## ブログ執筆中 (5月中完成予定)
 
-https://quip-amazon.com/ly3sAud3mKts/Amazon-SageMaker
-
