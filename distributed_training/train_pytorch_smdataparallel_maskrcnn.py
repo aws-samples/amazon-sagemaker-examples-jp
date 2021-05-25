@@ -263,6 +263,10 @@ def main():
         "--dtype",
         dest="dtype"
     )
+    parser.add_argument(
+        "--spot_ckpt",
+        default=None
+    )
 
 
     args = parser.parse_args()
@@ -292,6 +296,9 @@ def main():
     cfg.merge_from_file(args.config_file)
     cfg.merge_from_list(args.opts)
     cfg.DTYPE=args.dtype
+    # grab checkpoint file to start from
+    os.system(f"aws s3 cp {args.spot_ckpt} /opt/ml/checkpoints/{args.spot_ckpt.split('/')[-1]}")
+    cfg.MODEL.WEIGHT = f"/opt/ml/checkpoints/{args.spot_ckpt.split('/')[-1]}" 
     cfg.freeze()
     print ("CONFIG")
     print (cfg)

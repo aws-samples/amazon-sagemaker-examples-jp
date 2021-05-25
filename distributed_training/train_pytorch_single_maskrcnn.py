@@ -42,7 +42,6 @@ from maskrcnn_benchmark.utils.logger import setup_logger
 from maskrcnn_benchmark.utils.miscellaneous import mkdir
 from maskrcnn_benchmark.engine.tester import test
 
-'''
 # Import SMDataParallel modules for PyTorch.
 from smdistributed.dataparallel.torch.parallel.distributed import DistributedDataParallel as DDP
 import smdistributed.dataparallel.torch.distributed as dist
@@ -67,15 +66,22 @@ except ImportError:
 # except ImportError:
 #     print('Use APEX for better performance')
 use_apex_ddp = False
-'''
 
 def test_and_exchange_map(tester, model, distributed):
     results = tester(model=model, distributed=distributed)
 
-    map_results, raw_results = results[0]
-    bbox_map = map_results.results["bbox"]['AP']
-    segm_map = map_results.results["segm"]['AP']
-    
+    # main process only
+    #if is_main_process():
+    if dist.get_rank() ==0:
+        # Note: one indirection due to possibility of multiple test datasets, we only care about the first
+        #       tester returns (parsed results, raw results). In our case, don't care about the latter
+        map_results, raw_results = results[0]
+        bbox_map = map_results.results["bbox"]['AP']
+        segm_map = map_results.results["segm"]['AP']
+    else:
+        bbox_map = 0.
+        segm_map = 0.
+
     if distributed:
         map_tensor = torch.tensor([bbox_map, segm_map], dtype=torch.float32, device=torch.device("cuda"))
         torch.distributed.broadcast(map_tensor, 0)
@@ -120,13 +126,21 @@ def train(cfg, args):
         amp_opt_level = 'O1' if use_mixed_precision else 'O0'
         model, optimizer = amp.initialize(model, optimizer, opt_level=amp_opt_level)
 
+    if args.distributed:
+        # if use_apex_ddp:
+        #     model = DDP(model, delay_allreduce=True)
+        # else:
+        # SMDataParallel: Wrap the PyTorch model with SMDataParallel’s DDP
+        model = DDP(model, device_ids=[dist.get_local_rank()], broadcast_buffers=False)
+        #model = DDP(model)
     print("model parameter size: ", sum(p.numel() for p in model.parameters() if p.requires_grad))
     arguments = {}
     arguments["iteration"] = 0
 
     output_dir = cfg.OUTPUT_DIR
 
-    save_to_disk = True
+    # SMDataParallel: Save model on master node.
+    save_to_disk = dist.get_rank() == 0
     checkpointer = DetectronCheckpointer(
         cfg, model, optimizer, scheduler, output_dir, save_to_disk
     )
@@ -212,6 +226,7 @@ def main():
         help="path to config file",
         type=str,
     )
+    parser.add_argument("--local_rank", type=int, default=dist.get_local_rank())
     parser.add_argument(
         "--seed",
         help="manually set random seed for torch",
@@ -248,6 +263,10 @@ def main():
         "--dtype",
         dest="dtype"
     )
+    parser.add_argument(
+        "--spot_ckpt",
+        default=None
+    )
 
 
     args = parser.parse_args()
@@ -257,17 +276,29 @@ def main():
 
 
     # Set seed to reduce randomness
-    random.seed(args.seed)
-    np.random.seed(args.seed)
-    torch.manual_seed(args.seed)
-    torch.cuda.manual_seed(args.seed)
+    random.seed(args.seed + dist.get_local_rank())
+    np.random.seed(args.seed + dist.get_local_rank())
+    torch.manual_seed(args.seed + dist.get_local_rank())
+    torch.cuda.manual_seed(args.seed + dist.get_local_rank())
 
-    num_gpus = 1
-    args.distributed = False
+    # num_gpus = int(os.environ["WORLD_SIZE"]) if "WORLD_SIZE" in os.environ else 1
+    num_gpus = dist.get_world_size()
+    args.distributed = num_gpus > 1
+
+    if args.distributed:
+        # SMDataParallel: Pin each GPU to a single SMDataParallel process. 
+        torch.cuda.set_device(args.local_rank)
+        # torch.distributed.init_process_group(
+        #     backend="nccl", init_method="env://"
+        # )
+        #synchronize()
 
     cfg.merge_from_file(args.config_file)
     cfg.merge_from_list(args.opts)
     cfg.DTYPE=args.dtype
+    # grab checkpoint file to start from
+    os.system(f"aws s3 cp {args.spot_ckpt} /opt/ml/checkpoints/{args.spot_ckpt.split('/')[-1]}")
+    cfg.MODEL.WEIGHT = f"/opt/ml/checkpoints/{args.spot_ckpt.split('/')[-1]}" 
     cfg.freeze()
     print ("CONFIG")
     print (cfg)
@@ -276,7 +307,7 @@ def main():
     if output_dir:
         mkdir(output_dir)
 
-    logger = setup_logger("maskrcnn_benchmark", output_dir, 0)
+    logger = setup_logger("maskrcnn_benchmark", output_dir, dist.get_rank())
     logger.info("Using {} GPUs".format(num_gpus))
     logger.info(args)
 
