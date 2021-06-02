@@ -25,7 +25,7 @@ then
 fi
 
 repo="${image}:${tag}"
-fullname="${account}.dkr.ecr.${region}.amazonaws.com/${image}:${tag}"
+fullname="${account}.dkr.ecr.${region}.amazonaws.com/${repo}"
 
 # If the repository doesn't exist in ECR, create it.
 aws ecr describe-repositories --region ${region} --repository-names "${image}" > /dev/null 2>&1
