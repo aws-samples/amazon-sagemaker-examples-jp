@@ -24,8 +24,8 @@ then
     exit 255
 fi
 
-repo="${image}:${tag}"
-fullname="${account}.dkr.ecr.${region}.amazonaws.com/${repo}"
+
+fullname="${account}.dkr.ecr.${region}.amazonaws.com/${image}:${tag}"
 
 # If the repository doesn't exist in ECR, create it.
 aws ecr describe-repositories --region ${region} --repository-names "${image}" > /dev/null 2>&1
@@ -34,14 +34,13 @@ if [ $? -ne 0 ]; then
     aws ecr create-repository --region ${region} --repository-name "${image}" > /dev/null
 fi
 
+$(aws ecr get-login --no-include-email --region ${region}  --registry-ids 763104351884)
+docker build ${DIR}/ -t ${image} -f ${DIR}/Dockerfile  --build-arg region=${region}
+docker tag ${image} ${fullname}
+
 # Get the login command from ECR and execute it directly
-# $(aws ecr get-login --region ${region} --no-include-email)
-
-# $(aws ecr get-login --no-include-email --region ${region}  --registry-ids 763104351884)
-sm-docker build ${DIR}/ -t ${image} -f ${DIR}/Dockerfile --repository ${repo} --build-arg region=${region}
-# docker tag ${image} ${fullname}
-
-# docker push ${fullname}
+$(aws ecr get-login --region ${region} --no-include-email)
+docker push ${fullname}
 if [ $? -eq 0 ]; then
 	echo "Amazon ECR URI: ${fullname}"
 else
