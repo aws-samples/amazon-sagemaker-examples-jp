@@ -5,11 +5,11 @@ RUN apt-get update; \
     ; \
     rm -rf /var/lib/apt/lists/*
 
-RUN python3 -m pip install awsiotsdk numpy tensorflow-cpu==2.4.1 Pillow
+RUN python3 -m pip install awsiotsdk numpy dlr Pillow
 WORKDIR /app
 
 COPY ./IoTPublisher.py /app/IoTPublisher.py
-COPY ./gan.h5 /app/gan.h5
-COPY ./classifier.h5 /app/classifier.h5
+COPY ./test_X.npy /app/test_X.npy
+COPY ./classifier/ /app/
 
 CMD ["python3", "/app/IoTPublisher.py"]

@@ -18,5 +18,5 @@ Manifests:
   - Lifecycle:
       Install:
         Timeout: 600
-        Script: python3 -m pip install pip & pip3 install awsiotsdk numpy tensorflow-cpu==2.4.1 Pillow -U
+        Script: python3 -m pip install pip & pip3 install awsiotsdk numpy Pillow -U
       Run: python3 {artifacts:path}/publisher.py {artifacts:path}

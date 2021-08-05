@@ -9,7 +9,7 @@ RUN python3 -m pip install awsiotsdk numpy tensorflow-cpu==2.4.1 Pillow
 WORKDIR /app
 
 COPY ./IoTPublisher.py /app/IoTPublisher.py
-COPY ./gan.h5 /app/gan.h5
+COPY ./test_X.npy /app/test_X.npy
 COPY ./classifier.h5 /app/classifier.h5
 
 CMD ["python3", "/app/IoTPublisher.py"]

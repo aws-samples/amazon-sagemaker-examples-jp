@@ -16,13 +16,12 @@ logger = getLogger(__name__)
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
 
 TIMEOUT = 10
+INTERVAL = 60
 
 ipc_client = connect()
 
-INTERVAL = 60
+test_X = np.load('/app/test_X.npy')
 
-logger.info('start to load model')
-gan_model = tf.keras.models.load_model('/app/gan.h5')
 classifier_model = tf.keras.models.load_model('/app/classifier.h5')
 
 topic = "inference/result"
@@ -37,13 +36,10 @@ signal.signal(signal.SIGINT, signal_handler)
 
 cnt = 0
 while True:
-    # 撮影(GANで画像生成)
-    noise = np.random.uniform(-1, 1, (1,7,7,1))
-    img_array = ((gan_model.predict(noise)*127.5)+127.5).astype(np.uint8)
-    img = Image.fromarray(img_array[0,:,:,0])
     
-    # 撮影した画像をnumpy配列へ変換
-    img_array = (np.array(img).reshape(1,28,28,1)-127.5)/127.5
+    idx = np.random.randint(0,test_X.shape[0])
+    img_array = test_X[idx:idx+1,:,:,:]
+    
     pred_y = np.argmax(classifier_model.predict(img_array))
     
     result = 'anomaly' if pred_y % 2 == 0 else 'normal'

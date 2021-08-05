@@ -1,15 +1,11 @@
 from time import sleep
-import datetime,json
+import dlr, datetime, json, os, sys, signal
 from awsiot.greengrasscoreipc import connect
 from awsiot.greengrasscoreipc.model import (
     QOS,
     PublishToIoTCoreRequest
 )
-import tensorflow as tf
-from PIL import Image
-import os, sys
 import numpy as np
-import signal
 from logging import getLogger
 logger = getLogger(__name__)
 
@@ -24,9 +20,8 @@ ipc_client = connect()
 
 INTERVAL = 60
 
-logger.info('start to load model')
-gan_model = tf.keras.models.load_model('/app/gan.h5')
-classifier_model = tf.keras.models.load_model('/app/classifier.h5')
+neo_dir = '/app/classifier'
+classifier_neo = dlr.DLRModel(neo_dir, 'cpu', 0)
 
 topic = "inference/result"
 
@@ -40,14 +35,10 @@ signal.signal(signal.SIGINT, signal_handler)
 
 cnt = 0
 while True:
-    # 撮影(GANで画像生成)
-    noise = np.random.uniform(-1, 1, (1,7,7,1))
-    img_array = ((gan_model.predict(noise)*127.5)+127.5).astype(np.uint8)
-    img = Image.fromarray(img_array[0,:,:,0])
+    idx = np.random.randint(0,test_X.shape[0])
+    img_array = test_X[idx:idx+1,:,:,:]
     
-    # 撮影した画像をnumpy配列へ変換
-    img_array = (np.array(img).reshape(1,28,28,1)-127.5)/127.5
-    pred_y = np.argmax(classifier_model.predict(img_array))
+    pred_y = np.argmax(classifier_neo.run(test_X[0,:,:,:].reshape(1,1,28,28))[0])
     
     result = 'anomaly' if pred_y % 2 == 0 else 'normal'
 

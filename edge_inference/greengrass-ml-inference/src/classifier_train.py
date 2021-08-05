@@ -1,13 +1,15 @@
 import tensorflow as tf
 import numpy as np
 import os
-from tensorflow.keras.models import Model,Sequential
-from tensorflow.keras.layers import Input,Conv2D,LeakyReLU,Dense,Reshape,Flatten,Dropout,BatchNormalization,Conv2DTranspose,MaxPool2D
-from tensorflow.keras.activations  import sigmoid
-from tensorflow.keras.datasets import fashion_mnist
-from tensorflow.keras.optimizers import Adam
+from keras.models import Model,Sequential,load_model
+from keras.layers import Input,Conv2D,LeakyReLU,Dense,Reshape,Flatten,Dropout,BatchNormalization,Conv2DTranspose,MaxPool2D
+from keras.activations  import sigmoid
+from keras.datasets import fashion_mnist
+from keras.optimizers import Adam
 import argparse, json
+from distutils.util import strtobool
 
+MODEL_FILE_NAME = 'classifier.h5'
 
 def classifier():
     inputs = Input(shape=(28,28,1))
@@ -34,21 +36,18 @@ def classifier():
     x = Dropout(0.5)(x)
     x = Dense(10, activation='softmax')(x)
     model = Model(inputs=inputs, outputs=x)
-    print('classifier summary')
     model.summary()
     return model
     
-def train(train_x,train_y,valid_x,valid_y,epochs,model_dir):
-    model = classifier()
+def train(train_x,train_y,valid_x,valid_y,epochs,model_dir,increment,base_dir):
+    if increment:
+        model = load_model(os.path.join(base_dir, MODEL_FILE_NAME))
+    else:
+        model = classifier()
     model.compile(optimizer=Adam(lr=0.0001),metrics=['accuracy'],loss="categorical_crossentropy")
     model.fit(train_x,train_y,batch_size=16,epochs=epochs,validation_data=(valid_x,valid_y))
     
-    save_model_path = os.path.join(model_dir, '1.h5')
-    model.save(save_model_path)
-    
-    # 増分学習
-    model.fit(train_x,train_y,batch_size=16,epochs=epochs,validation_data=(valid_x,valid_y))
-    save_model_path = os.path.join(model_dir, '2.h5')
+    save_model_path = os.path.join(model_dir, MODEL_FILE_NAME)
     model.save(save_model_path)
     
     return model
@@ -61,6 +60,7 @@ def _parse_args():
     parser.add_argument('--hosts', type=list, default=json.loads(os.environ.get('SM_HOSTS')))
     parser.add_argument('--current-host', type=str, default=os.environ.get('SM_CURRENT_HOST'))
     parser.add_argument('--epochs', type=int, default=2)
+    parser.add_argument('--increment', type=strtobool ,default=False)
 
     return parser.parse_known_args()
 
@@ -78,7 +78,8 @@ def load_training_data(base_dir):
 
 if __name__ == "__main__":
     args, unknown = _parse_args()
+    print(args)
     train_X, train_y, valid_X, valid_y = load_training_data(args.train)
-    model = train(train_X, train_y, valid_X, valid_y,args.epochs,args.sm_model_dir)
+    model = train(train_X, train_y, valid_X, valid_y,args.epochs,args.sm_model_dir,args.increment,args.train)
 
     exit()

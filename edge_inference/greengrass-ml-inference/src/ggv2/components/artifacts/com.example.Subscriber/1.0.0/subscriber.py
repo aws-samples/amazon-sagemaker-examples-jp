@@ -15,7 +15,7 @@ os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
 
 logger.info(f'argv:{sys.argv}')
 
-model_path = os.path.join(sys.argv[1],'1.h5')
+model_path = os.path.join(sys.argv[1],'classifier.h5')
 
 logger.info('start subscriber...')
 

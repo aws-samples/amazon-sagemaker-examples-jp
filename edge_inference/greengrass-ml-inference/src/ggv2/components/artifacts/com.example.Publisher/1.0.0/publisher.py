@@ -6,7 +6,6 @@ from awsiot.greengrasscoreipc.model import (
     PublishMessage,
     JsonMessage
 )
-import tensorflow as tf
 from PIL import Image
 import os, sys
 import numpy as np
@@ -17,17 +16,13 @@ os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
 
 logger.info(f'argv:{sys.argv}')
 
-model_path = os.path.join(sys.argv[1],'1.h5')
+test_X_path = os.path.join(sys.argv[1],'test_X.npy')
+test_X = np.load(test_X_path)
 
 logger.info('start publisher...')
 
 TIMEOUT = 10
 interval = 60
-logger.info('start to load model')
-
-model = tf.keras.models.load_model(model_path)
-
-logger.info('start to iot client')
 
 ipc_client = awsiot.greengrasscoreipc.connect()
 
@@ -36,11 +31,10 @@ topic = "my/topic"
 logger.info('start loop')
 
 while True:
-    noise = np.random.uniform(-1, 1, (1,7,7,1))
-    img_array = ((model.predict(noise)*127.5)+127.5).astype(np.uint8)
-    img = Image.fromarray(img_array[0,:,:,0])
+    # generate and save image file
+    idx = np.random.randint(0,test_X.shape[0])
     file_name = '/tmp/' + datetime.datetime.now(datetime.timezone(datetime.timedelta(hours=9))).strftime('%Y%m%d%H%M%S') + '.png'
-    img.save(file_name)
+    Image.fromarray(((test_X[idx,:,:,0]*127.5)+127.5).astype(np.uint8)).save(file_name)
 
     message = {"file_name": file_name }
     message_json = json.dumps(message).encode('utf-8')
