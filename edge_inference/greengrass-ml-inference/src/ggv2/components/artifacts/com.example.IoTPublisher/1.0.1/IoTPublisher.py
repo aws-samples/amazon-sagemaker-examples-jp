@@ -23,6 +23,8 @@ INTERVAL = 60
 neo_dir = '/app/classifier'
 classifier_neo = dlr.DLRModel(neo_dir, 'cpu', 0)
 
+test_X = np.load('/app/test_X.npy')
+
 topic = "inference/result"
 
 def signal_handler(signal, frame):

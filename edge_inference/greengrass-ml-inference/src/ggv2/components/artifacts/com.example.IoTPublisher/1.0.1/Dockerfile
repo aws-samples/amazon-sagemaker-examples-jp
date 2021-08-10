@@ -10,6 +10,6 @@ WORKDIR /app
 
 COPY ./IoTPublisher.py /app/IoTPublisher.py
 COPY ./test_X.npy /app/test_X.npy
-COPY ./classifier/ /app/
+COPY ./classifier/ /app/classifier/
 
 CMD ["python3", "/app/IoTPublisher.py"]
