@@ -1,4 +1,6 @@
 # Amazon SageMaker Examples JP
+サンプルコードの対象範囲を広げて、[こちらのリポジトリ](https://github.com/aws-samples/aws-ml-jp) に移行しました。
+
 [Amazon SageMaker Examples](https://github.com/awslabs/amazon-sagemaker-examples) の日本語訳や、オリジナルのサンプルコードのためのレポジトリです。
 AWS 目黒オフィスで SageMaker 体験ハンズオンを定期的に開催しています [[connpass](https://awsj-ml.connpass.com/)]。
 
