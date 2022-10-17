@@ -19,8 +19,6 @@ def predict(input_model_dir:str, test_x):
     model_path = os.path.join(input_model_dir, 'model.tar.gz')
     with tarfile.open(model_path) as tar:
         
-        import os
-        
         def is_within_directory(directory, target):
             
             abs_directory = os.path.abspath(directory)
