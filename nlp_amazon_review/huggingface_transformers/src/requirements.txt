@@ -1,0 +1,4 @@
+transformers==3.0.2
+mecab-python3==0.996.5
+tqdm
+unidic-lite
