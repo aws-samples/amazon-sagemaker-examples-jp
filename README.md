@@ -1,3 +1,5 @@
+# Archived
+---
 # Amazon SageMaker Examples JP
 **サンプルコードの対象範囲を広げて、[こちらのリポジトリ](https://github.com/aws-samples/aws-ml-jp) に移行しました。**
 
